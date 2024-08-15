@@ -1,0 +1,62 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_emc_vnx_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, emc, vnx, storage, arrays, ontap, systems 
+summary: 스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다. 
+---
+= ONTAP 시스템을 사용하는 EMC VNX 스토리지에 필요한 매개 변수입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다.
+
+다음 표에는 스토리지 배열에 설정해야 하는 호스트 구성 매개 변수가 나와 있습니다.
+
+|===
+| 매개 변수 | 설정 
+
+
+ a| 
+`Initiator type`
+ a| 
+CLARiX/VNX
+
+
+
+ a| 
+`Array Com Path`
+ a| 
+활성화됨
+
+
+
+ a| 
+`Failover mode`
+ a| 
+4
+
+
+
+ a| 
+`Unit serial number`
+ a| 
+LUN입니다
+
+
+
+ a| 
+`Host name`
+ a| 
+사용자가 제공한 호스트 이름 및 포트 번호입니다
+
+
+
+ a| 
+`IP address`
+ a| 
+고유 가짜 IP 주소 스토리지 배열 구성의 다른 위치에 이 IP 주소를 입력하지 않았는지, 네트워크에 있는 IP 주소가 아닌지 확인해야 합니다.
+
+|===

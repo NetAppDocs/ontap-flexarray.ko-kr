@@ -1,0 +1,49 @@
+---
+permalink: install/concept_aggregate_rules_when_the_storage_arrays_are_from_the_same_family.html 
+sidebar: sidebar 
+keywords: aggregate, rules, storage, arrays, same, family, add, luns, single, multiple, distribute 
+summary: 스토리지 어레이가 같은 스토리지 어레이 공급업체 및 모델 제품군에 속해 있는 경우 어레이 LUN을 애그리게이트에서 배치하는 방법에 대해 구체적인 규칙이 적용됩니다. 
+---
+= 스토리지 어레이가 같은 제품군에 속하는 경우 규칙을 집계합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 어레이가 같은 스토리지 어레이 공급업체 및 모델 제품군에 속해 있는 경우 어레이 LUN을 애그리게이트에서 배치하는 방법에 대해 구체적인 규칙이 적용됩니다.
+
+스토리지 어레이가 같은 공급업체에서 제공하는 경우 어레이 LUN을 애그리게이트에 추가하는 규칙은 다음과 같습니다.
+
+* 스토리지 어레이가 같은 제품군에 속하는 경우 스토리지 어레이의 어레이 LUN을 동일한 애그리게이트에서 혼합할 수 있습니다.
+* 어레이 LUN을 여러 개의 애그리게이트로 분리할 수 있습니다.
+
+
+다음 예에서는 ONTAP 시스템을 지원하는 스토리지 어레이가 동일한 공급업체 제품군인 _ 에 있을 때 어레이 LUN을 애그리게이트에서 배치하는 몇 가지 옵션을 보여줍니다.
+
+[NOTE]
+====
+이 그림에서는 단순한 관리를 위해 두 개의 스토리지 어레이만 보여 줍니다. 즉, 구축에 스토리지 배열을 더 많이 포함할 수 있습니다.
+
+====
+
+
+== 예 1: 모든 스토리지 어레이의 LUN을 단일 애그리게이트로 추가합니다
+
+다음 그림에서와 같이 하나의 애그리게이트를 생성한 다음, 동일한 제품군의 모든 스토리지 어레이에서 모든 LUN을 동일한 애그리게이트에 추가할 수 있습니다.
+
+image::../media/luns_assigned_to_same_aggr_same_family.gif[이 그래픽은 주변 텍스트로 설명됩니다.]
+
+
+
+== 예 2: 스토리지 어레이에서 여러 애그리게이트를 통해 LUN을 분산하고 혼합합니다
+
+다음 그림과 같이 여러 애그리게이트를 생성한 다음, 같은 제품군의 서로 다른 스토리지 어레이의 어레이 LUN을 애그리게이트에서 분산하고 혼합할 수 있습니다.
+
+image:../media/luns_from_same_family_mixed_in_multiple_aggrs.gif[""]
+
+[NOTE]
+====
+동일한 모델의 스토리지 배열이 있고 Fibre Channel 드라이브가 있고 다른 스토리지 배열에 SATA 드라이브가 있는 경우 이 예는 지원되지 않습니다. 이 경우 이러한 스토리지 어레이는 동일한 제품군에 속하지 않는 것으로 간주되지 않습니다.
+
+====

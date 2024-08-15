@@ -1,0 +1,20 @@
+---
+permalink: implement-third-party/concept_guidelines_for_configuring_ports_on_hitachi_storage_arrays.html 
+sidebar: sidebar 
+keywords: guidelines, configuring, ports, hitachi, storage, arrays 
+summary: Hitachi 스토리지 어레이에서 포트를 구성할 때는 특정 지침을 따라야 합니다. 
+---
+= Hitachi 스토리지 어레이의 포트 구성 지침
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Hitachi 스토리지 어레이에서 포트를 구성할 때는 특정 지침을 따라야 합니다.
+
+Hitachi 스토리지 시스템에서 포트를 구성하기 위한 지침은 다음과 같습니다.
+
+* 포트당 하나의 호스트 그룹만 추가해야 합니다.
+* 호스트 그룹에 어레이 LUN 근처에 있는 V 시리즈 시스템의 모든 FC 이니시에이터 포트가 포함되어 있는지 확인해야 합니다.
+

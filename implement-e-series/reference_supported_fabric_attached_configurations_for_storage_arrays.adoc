@@ -1,0 +1,20 @@
+---
+permalink: implement-e-series/reference_supported_fabric_attached_configurations_for_storage_arrays.html 
+sidebar: sidebar 
+keywords: supported, fabric-attached, configurations, e-series, storage, arrays 
+summary: 패브릭 연결 구성의 특정 E-Series 스토리지 어레이만 ONTAP 시스템에 연결할 수 있습니다. 
+---
+= E-Series 스토리지 어레이에 대해 지원되는 패브릭 연결 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+패브릭 연결 구성의 특정 E-Series 스토리지 어레이만 ONTAP 시스템에 연결할 수 있습니다
+
+상호 운용성 매트릭스에는 특정 어레이 모델에 대한 추가 정보가 포함되어 있습니다.
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

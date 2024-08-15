@@ -1,0 +1,35 @@
+---
+permalink: install/task_obtaining_wwns_manually.html 
+sidebar: sidebar 
+keywords: obtain, wwpns, manually 
+summary: 'ONTAP 시스템이 SAN 스위치에 연결되어 있지 않은 경우 시스템을 스위치에 연결하는 데 사용할 시스템 FC 이니시에이터 포트의 WWPN(World Wide Port Name)을 얻어야 합니다.' 
+---
+= WWPN을 수동으로 구하기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템이 SAN 스위치에 연결되어 있지 않은 경우 시스템을 스위치에 연결하는 데 사용할 시스템 FC 이니시에이터 포트의 WWPN(World Wide Port Name)을 얻어야 합니다.
+
+스위치 구성에 WWPN을 입력하여 발생할 수 있는 잠재적 오류를 방지할 수 있으므로 스위치에서 WWPN을 자동으로 검색하도록 하는 것이 WWPN을 얻는 기본 방법입니다.
+
+.단계
+. 시스템의 콘솔 연결을 노트북 컴퓨터에 연결합니다.
+. 시스템 전원을 켭니다.
++
+콘솔에 다음 메시지가 표시되면 Ctrl+c를 눌러 부팅 프로세스를 중단합니다.
+
++
+[listing]
+----
+Press CTRL-C for boot menu
+----
+. 부팅 옵션 메뉴에서 유지 관리 모드 옵션을 선택합니다.
+. 다음 명령을 입력하여 시스템의 FC 이니시에이터 포트에 대한 WWPN을 표시합니다. `storage show adapter`
++
+특정 어댑터 WWPN을 나열하려면 어댑터 이름(예: storage show adapter 0a)을 추가합니다.
+
+. 사용할 WWPN을 기록하고 유지보수 모드를 종료합니다.
+

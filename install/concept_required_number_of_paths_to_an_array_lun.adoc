@@ -1,0 +1,18 @@
+---
+permalink: install/concept_required_number_of_paths_to_an_array_lun.html 
+sidebar: sidebar 
+keywords: required, number, paths, array, lun 
+summary: ONTAP는 어레이 LUN에 대한 경로 4개 또는 2개를 지원합니다. 
+---
+= 스토리지 LUN에 대한 필수 경로 수입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP는 어레이 LUN에 대한 경로 4개 또는 2개를 지원합니다.
+
+ONTAP는 스토리지 어레이가 최소 2개의 중복 스토리지 어레이 포트에서 특정 어레이 LUN에 대한 액세스를 제공할 것으로 예상하고 있어야 합니다. 즉, 최소 2개의 중복 경로를 통해 액세스할 수 있어야 합니다.
+
+다른 컨트롤러, 클러스터 또는 엔클로저 등 단일 장애 지점을 방지하려면 특정 LUN에 액세스하기 위해 선택한 스토리지 어레이의 포트가 서로 다른 구성 요소의 포트인지 확인합니다. 그 이유는 한 구성 요소에 장애가 발생해도 스토리지 LUN에 대한 모든 액세스 권한이 손실되는 것을 원치 않기 때문입니다.

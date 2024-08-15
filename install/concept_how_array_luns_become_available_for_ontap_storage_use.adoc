@@ -1,0 +1,28 @@
+---
+permalink: install/concept_how_array_luns_become_available_for_ontap_storage_use.html 
+sidebar: sidebar 
+keywords: how, array, luns, available, ontap, storage, use 
+summary: ONTAP 시스템은 스토리지 LUN을 사용하도록 ONTAP를 구성할 때까지 스토리지 LUN을 사용할 수 없습니다. 
+---
+= ONTAP 스토리지에서 어레이 LUN을 사용할 수 있는 방법
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템은 스토리지 LUN을 사용하도록 ONTAP를 구성할 때까지 스토리지 LUN을 사용할 수 없습니다.
+
+스토리지 시스템 관리자가 ONTAP에서 스토리지 LUN에 액세스할 수 있도록 설정하지만 ONTAP는 다음 두 작업이 모두 완료될 때까지 스토리지 LUN을 스토리지에 사용할 수 없습니다.
+
+. 스토리지 LUN을 사용하도록 라이센스가 부여된 하나의 ONTAP 시스템을 스토리지 LUN의 _owner_로 할당해야 합니다.
+. 어레이 LUN을 애그리게이트에 추가해야 합니다.
+
+
+스토리지 LUN을 ONTAP 시스템에 할당하면 ONTAP는 스토리지 LUN에 데이터를 기록하여 할당된 시스템을 스토리지 LUN의 소유자로 식별합니다. 이 논리적 관계를 _DISK 소유권 _ 이라고 합니다.
+
+스토리지 LUN을 ONTAP 시스템에 할당하면 해당 시스템에서 소유하는 스페어 LUN이 되고 다른 ONTAP 시스템에서는 더 이상 사용할 수 없습니다.
+
+스페어 어레이 LUN은 Aggregate에 추가하기 전까지는 스토리지에 사용할 수 없습니다. 따라서 ONTAP는 스토리지 LUN의 소유자만 LUN에 데이터를 쓰고 LUN에서 데이터를 읽을 수 있도록 합니다.
+
+HA 페어에서 두 노드는 동일한 스토리지를 볼 수 있어야 하지만, 한 쌍에서 하나의 노드만 어레이 LUN의 소유자입니다. 소유 노드에 장애가 발생하는 경우 파트너 노드에서 어레이 LUN에 대한 읽기/쓰기 액세스를 인계받습니다. 원래 소유 노드는 노드를 사용할 수 없게 된 문제가 해결된 후 소유권을 재개합니다.

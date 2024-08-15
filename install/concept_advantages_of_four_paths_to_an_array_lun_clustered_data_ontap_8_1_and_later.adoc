@@ -1,0 +1,21 @@
+---
+permalink: install/concept_advantages_of_four_paths_to_an_array_lun_clustered_data_ontap_8_1_and_later.html 
+sidebar: sidebar 
+keywords: advantages, four, paths, array, lun 
+summary: ONTAP용 스토리지 LUN에 대한 경로 수를 계획할 때는 2개 또는 4개의 경로를 설정할 것인지 고려해야 합니다. 
+---
+= 어레이 LUN에 대한 4가지 경로의 이점
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP용 스토리지 LUN에 대한 경로 수를 계획할 때는 2개 또는 4개의 경로를 설정할 것인지 고려해야 합니다.
+
+어레이 LUN에 대한 경로 4개를 설정하면 다음과 같은 이점이 있습니다.
+
+* 스위치에 장애가 발생해도 두 스토리지 어레이 컨트롤러를 모두 사용할 수 있습니다.
+* 스토리지 배열 컨트롤러에 장애가 발생해도 두 스위치를 계속 사용할 수 있습니다.
+* 로드 밸런싱이 2개가 아닌 4개 경로를 넘기 때문에 성능이 향상될 수 있습니다.
+

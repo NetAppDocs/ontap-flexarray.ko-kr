@@ -1,0 +1,39 @@
+---
+permalink: implement-e-series/concept_sharing_a_target_port_with_two_fc_initiator_ports.html 
+sidebar: sidebar 
+keywords: share, target, port, two, fc initiator, ports 
+summary: 여러 노드에 걸쳐 최대 2개의 ONTAP FC 이니시에이터 포트를 스토리지 어레이의 단일 타겟 포트에 연결할 수 있습니다. 이 구성은 ONTAP의 MetroCluster 구성에서 지원됩니다. 
+---
+= 타겟 포트를 2개의 FC 이니시에이터 포트와 공유하는 경우
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+여러 노드에 걸쳐 최대 2개의 ONTAP FC 이니시에이터 포트를 스토리지 어레이의 단일 타겟 포트에 연결할 수 있습니다. 이 구성은 ONTAP의 MetroCluster 구성에서 지원됩니다.
+
+이 구성은 시스템에서 실행되는 ONTAP 릴리스에 대해 지원되는 상호 운용성 매트릭스에 나열된 모든 스토리지 어레이에서 사용할 수 있도록 지원됩니다.
+
+다음 그림에서는 HA 쌍이 포함된 공유 타겟 포트 구성을 보여 줍니다. 타겟 포트를 두 개의 FC 이니시에이터 포트와 공유하면 독립 실행형 시스템과 HA 쌍 모두에서 지원됩니다.
+
+[NOTE]
+====
+FC 이니시에이터 포트를 여러 타겟 포트 및 조닝과 공유하는 방법에 대한 자세한 내용은 _ FlexArray 가상화 설치 요구사항 및 참조 _ 을(를) 참조하십시오
+
+====
+
+
+== FC 이니시에이터 포트에 연결된 공유 타겟 포트입니다
+
+다음 예제는 단일 대상 포트가 2개의 FC 이니시에이터 포트에 연결되는 HA 쌍을 보여줍니다.
+
+image::../media/shared_target_ports.gif[이 그래픽은 주변 텍스트에 설명되어 있습니다]
+
+컨트롤러 VS1 및 VS2의 이니시에이터 포트 0a는 스토리지 어레이 포트 1A에 연결되고 컨트롤러의 포트 0c는 스토리지 어레이 포트 2A에 연결됩니다.
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray 가상화 설치 요구 사항 및 참조 자료"]

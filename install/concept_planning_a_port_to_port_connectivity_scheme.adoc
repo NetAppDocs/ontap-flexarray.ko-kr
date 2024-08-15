@@ -1,0 +1,14 @@
+---
+permalink: install/concept_planning_a_port_to_port_connectivity_scheme.html 
+sidebar: sidebar 
+keywords: plan, port to port, connectivity, scheme 
+summary: ONTAP 시스템의 FC 이니시에이터 포트와 스토리지 어레이 포트 간의 접속 계획에는 이중화 실현 방법을 결정하고 어레이 LUN에 대한 경로 수에 대한 요구 사항을 충족해야 합니다. 
+---
+= 포트 간 연결 계획
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템의 FC 이니시에이터 포트와 스토리지 어레이 포트 간의 접속 계획에는 이중화 실현 방법을 결정하고 어레이 LUN에 대한 경로 수에 대한 요구 사항을 충족해야 합니다.

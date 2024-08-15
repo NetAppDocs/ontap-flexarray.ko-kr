@@ -1,0 +1,86 @@
+---
+permalink: install/concept_example_of_a_configuration_with_multiple_lun_groups.html 
+sidebar: sidebar 
+keywords: example, configuration, multiple, lun, groups 
+summary: 다중 LUN 그룹 구성을 사용하면 워크로드를 여러 대상 포트로 분산시켜 시스템 성능을 향상시킬 수 있습니다. 
+---
+= 여러 LUN 그룹이 포함된 구성의 예
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다중 LUN 그룹 구성을 사용하면 워크로드를 여러 대상 포트로 분산시켜 시스템 성능을 향상시킬 수 있습니다.
+
+대부분의 스토리지 시스템에서 다중 LUN 그룹 구성이 지원됩니다. 이 구성이 스토리지 배열에서 지원되는지 확인하려면 _Interoperability Matrix_를 참조하십시오.
+
+다음 그림에서는 ONTAP 시스템의 한 FC 이니시에이터 포트 쌍(0c 및 0f)이 하나의 스토리지 어레이 포트 쌍을 통해 하나의 LUN 그룹에 액세스하는 방법을 보여 줍니다. 그리고 두 번째 FC 이니시에이터 포트 쌍(0a 및 0h)은 다른 스토리지 어레이 포트 쌍을 통해 같은 스토리지 어레이의 두 번째 LUN 그룹에 액세스합니다.
+
+이 구성은 2개의 2포트 스토리지 LUN 그룹 _ 을(를) 사용하는 _stand-alone이라고 합니다. 여러 LUN 그룹 구성에서는 독립 실행형 시스템이 아닌 HA 쌍을 가질 수 있습니다.
+
+image::../media/multiple_lun_groups_with_stand_alone_6xxx_array_controller.gif[이 그래픽은 주변 텍스트로 설명됩니다.]
+
+이 다중 LUN 그룹 구성을 사용하면 스토리지 배열의 RAID 그룹(패리티 그룹)에 입출력을 분산시킬 수 있습니다. 서로 다른 FC 이니시에이터 포트 쌍이 스토리지 어레이의 서로 다른 LUN 그룹에 액세스하도록 구성을 설정합니다. 지정된 LDEV(논리 디바이스)가 스토리지 시스템의 두 개의 중복 포트에만 매핑되기 때문에 ONTAP 시스템은 두 개의 경로에서만 지정된 스토리지 LUN을 인식합니다. 각 LUN 그룹은 다른 타겟 포트 쌍을 통해 액세스됩니다.
+
+각 LDEV는 외부에서 LUN ID로 식별됩니다. LDEV는 ONTAP 시스템에 표시될 모든 스토리지 포트의 동일한 LUN ID에 매핑되어야 합니다.
+
+[NOTE]
+====
+동일한 ID를 사용하는 LUN이 타겟 포트의 다른 호스트 그룹에 있더라도 동일한 LUN ID는 서로 다른 두 LDEV를 참조할 수 없습니다. LUN ID 재사용은 동일한 타겟 포트에서 지원되지 않지만 LUN이 다른 스토리지 스토리지 포트에 매핑되는 경우 스토리지 시스템에서 LUN ID 재사용이 지원됩니다.
+
+====
+다음 표에는 이 예제에 대한 조닝(Zoning)이 요약되어 있습니다. 권장되는 조닝 전략은 단일 이니시에이터 조닝입니다.
+
+|===
+| Zone(영역) | ONTAP 시스템의 FC 이니시에이터 포트입니다 | 스토리지 시스템 
+
+
+ a| 
+스위치 1
+
+
+
+ a| 
+z1를 참조하십시오
+ a| 
+포트 0a
+ a| 
+컨트롤러 1 포트 B
+
+
+
+ a| 
+z2를 참조하십시오
+ a| 
+포트 0c
+ a| 
+컨트롤러 1 포트 A
+
+
+
+ a| 
+스위치 2
+
+
+
+ a| 
+z3를 참조하십시오
+ a| 
+포트 0f
+ a| 
+컨트롤러 2 포트 A
+
+
+
+ a| 
+z4를 참조하십시오
+ a| 
+포트 0h
+ a| 
+컨트롤러 2 포트 B
+
+|===
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

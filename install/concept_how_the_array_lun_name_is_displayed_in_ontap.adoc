@@ -1,0 +1,37 @@
+---
+permalink: install/concept_how_the_array_lun_name_is_displayed_in_ontap.html 
+sidebar: sidebar 
+keywords: how, array, lun, name, displayed, ontap, output, example, storage, disk 
+summary: 스토리지 LUN에 대한 경로가 여러 개이더라도 클러스터 전체의 고유한 이름이 각 스토리지 LUN에 할당됩니다. 이전 릴리즈에서는 각 스토리지 LUN에 지정된 시간에 LUN에 액세스하는 경로를 기준으로 여러 개의 이름이 있는 것과 다릅니다. 
+---
+= ONTAP에서 스토리지 LUN 이름이 표시되는 방식
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 LUN에 대한 경로가 여러 개이더라도 클러스터 전체의 고유한 이름이 각 스토리지 LUN에 할당됩니다. 이전 릴리즈에서는 각 스토리지 LUN에 지정된 시간에 LUN에 액세스하는 경로를 기준으로 여러 개의 이름이 있는 것과 다릅니다.
+
+명령을 실행하면 각 어레이 LUN에 매핑된 이전 이름을 볼 수 `storage disk show --disk <disk name> -fields diskpathnames` 있습니다.
+
+
+
+== storage disk show--disk <disk name>-fields diskpathnames 명령의 출력 예입니다
+
+[listing]
+----
+vgv3270f47ab::*> storage disk show -type LUN
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+EMC-1.7              8.66GB     -   - LUN     spare       Pool0     vgv3270f47a
+EMC-1.8              8.66GB     -   - LUN     spare       Pool0     vgv3270f47a
+EMC-1.9              8.66GB     -   - LUN     spare       Pool0     vgv3270f47a
+EMC-1.10             8.66GB     -   - LUN     spare       Pool0     vgv3270f47a
+
+vgv3270f47ab::*> storage disk show -disk EMC-1.10 -fields diskpathnames
+disk     diskpathnames
+-------- -------------------------------------------------------------------------------------------------------------------------------
+EMC-1.10 vgv3270f47a:vgbr300s181:5.126L9,vgv3270f47a:vgbr300s139:5.126L9,vgv3270f47b:vgbr300s181:5.126L9,vgv3270f47b:vgbr300s139:5.126L9
+----

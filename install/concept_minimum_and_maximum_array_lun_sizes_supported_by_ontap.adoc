@@ -1,0 +1,47 @@
+---
+permalink: install/concept_minimum_and_maximum_array_lun_sizes_supported_by_ontap.html 
+sidebar: sidebar 
+keywords: minimum, maximum, array, lun, sizes, supported, ontap, configurations 
+summary: 스토리지 시스템에서 제공되는 스토리지 LUN은 스토리지 LUN이 있는 ONTAP 구성에 필요한 최소 및 최대 크기 요구 사항 내에 있어야 합니다. ONTAP는 최소 또는 최대 크기 요구 사항을 준수하지 않는 스토리지 LUN을 식별하는 오류 메시지를 발행합니다. 
+---
+= ONTAP 구성에 지원되는 최소 및 최대 어레이 LUN 크기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 시스템에서 제공되는 스토리지 LUN은 스토리지 LUN이 있는 ONTAP 구성에 필요한 최소 및 최대 크기 요구 사항 내에 있어야 합니다. ONTAP는 최소 또는 최대 크기 요구 사항을 준수하지 않는 스토리지 LUN을 식별하는 오류 메시지를 발행합니다.
+
+최소 및 최대 스토리지 LUN 크기는 ONTAP에서 측정 단위를 정의하는 방법에 따라 계산됩니다. GB 및 TB의 ONTAP 정의는 다음과 같습니다.
+
+[cols="2*"]
+|===
+| 하나... | 같음... 
+
+
+ a| 
+GB
+ a| 
+1000 x 1024 x 1024바이트(1000MB)
+
+
+
+ a| 
+TB
+ a| 
+1000 x 1000 x 1024 x 1024바이트(1000GB)
+
+|===
+스토리지 배열 공급업체마다 측정 단위를 계산하기 위해 다른 공식을 사용합니다. 공급업체의 측정 단위를 사용하여 ONTAP 구성에서 지원되는 최소 및 최대 크기에 해당하는 스토리지 LUN 크기를 계산해야 합니다.
+
+ONTAP에서 지원하는 최대 LUN 크기는 ONTAP 릴리즈와 다릅니다. 최소 및 최대 스토리지 LUN 크기에 대한 자세한 내용은 _Hardware Universe_를 참조하십시오.
+
+[NOTE]
+====
+데이터(스토리지) LUN의 최소 스토리지 LUN 크기가 루트 볼륨의 최소 스토리지 LUN 크기와 다릅니다.
+
+====
+* 관련 정보 *
+
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]

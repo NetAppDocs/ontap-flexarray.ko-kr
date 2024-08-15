@@ -1,0 +1,63 @@
+---
+permalink: install/concept_planning_summary_for_a_v_series_system_using_native_disks.html 
+sidebar: sidebar 
+keywords: plan, summary, v-series, system, native, disks, additional, considerations, setup, array, luns 
+summary: 신규 또는 기존 V-Series 시스템에 기본 디스크 쉘프를 설치할 수 있습니다. 하지만 V-Series 시스템에 기본 디스크 쉘프를 설치하려면 FAS 시스템에 디스크 쉘프를 설치하는 것과 비교하여 몇 가지 추가 요소를 고려해야 합니다. 
+---
+= 기본 디스크를 사용하는 V-Series 시스템에 대한 계획 요약
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+신규 또는 기존 V-Series 시스템에 기본 디스크 쉘프를 설치할 수 있습니다. 하지만 V-Series 시스템에 기본 디스크 쉘프를 설치하려면 FAS 시스템에 디스크 쉘프를 설치하는 것과 비교하여 몇 가지 추가 요소를 고려해야 합니다.
+
+
+
+== 디스크가 있는 V-Series 시스템의 기본 설정을 위한 추가 계획 수립 고려사항
+
+기본 디스크를 사용하는 V-Series 시스템에 대한 기본 설정 및 설치 요구사항을 결정할 때 다음 사항을 고려해야 합니다.
+
+* V 시리즈 시스템에 디스크 쉘프와 함께 주문된 경우, 공장 출하 시 루트 볼륨을 구성하고 라이센스 및 ONTAP 소프트웨어를 설치합니다(FAS 시스템에서와 마찬가지로).
+* V 시리즈 시스템에 디스크 쉘프가 함께 주문되지 않은 경우, ONTAP 소프트웨어와 적절한 라이센스를 설치해야 합니다.
+* ONTAP는 V-Series 시스템에 연결된 네이티브 디스크에 소유권을 자동으로 할당합니다.
+
+
+
+
+== V 시리즈 시스템에서 디스크와 스토리지 LUN을 모두 사용하는 경우 추가 계획 고려 사항
+
+다음 표에는 각 작업에 도움이 되는 추가 계획 고려 사항과 정보의 위치가 요약되어 있습니다.
+
+|===
+| 계획 고려 사항 | 지침 위치 
+
+
+ a| 
+루트 볼륨의 위치입니다
+ a| 
+xref:concept_location_of_the_root_volume.adoc[루트 볼륨의 위치입니다]
+
+
+
+ a| 
+V-Series 시스템에 대해 지원되는 최대 한도를 초과하지 않고 할당할 수 있는 디스크 및 어레이 LUN의 개수입니다
+ a| 
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]
+
+
+
+ a| 
+FC 이니시에이터 포트 사용
+ a| 
+xref:concept_requirements_for_v_series_fc_initiator_port_usage.adoc[FC 이니시에이터 포트 사용 요구 사항]
+
+
+
+ a| 
+디스크에 상주해야 하는 데이터 유형과 어레이 LUN에 상주해야 하는 데이터 유형입니다
+ a| 
+관리해야 하는 데이터 유형을 평가한 다음 데이터가 기본 디스크 또는 어레이 LUN에 상주할 수 있는지 결정해야 합니다.
+
+|===

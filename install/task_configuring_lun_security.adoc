@@ -1,0 +1,32 @@
+---
+permalink: install/task_configuring_lun_security.html 
+sidebar: sidebar 
+keywords: configure, lun, security 
+summary: 스토리지 관리자는 다른 호스트가 ONTAP에서 사용할 스토리지 LUN을 액세스할 수 없도록 스토리지 배열을 구성하고 호스트 그룹을 생성해야 합니다. 
+---
+= LUN 보안을 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 관리자는 다른 호스트가 ONTAP에서 사용할 스토리지 LUN을 액세스할 수 없도록 스토리지 배열을 구성하고 호스트 그룹을 생성해야 합니다.
+
+LUN 보안의 개념은 LUN 보안이 스토리지 시스템에 설정되어 있다는 점을 제외하면 조닝과 유사합니다. LUN 보안은 서로 다른 서버가 SAN에서 다른 서버의 스토리지를 사용하지 못하도록 합니다. LUN 보안을 _LUN 마스킹_이라고도 합니다.
+
+.단계
+. 스토리지 시스템에서 LUN 보안을 설정합니다.
++
+LUN 보안 설정에 대한 자세한 내용은 스토리지 배열 설명서를 참조하십시오.
+
++
+공급업체의 스토리지 어레이에 대한 LUN 보안에 대한 추가 세부 정보도 확인해야 https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["타사 스토리지를 위한 FlexArray 가상화 구축"] 합니다. 일부 스토리지 어레이는 ONTAP 시스템에서만 사용해야 합니다.
+
+. ONTAP 시스템에 대한 호스트 그룹 또는 이와 동등한 호스트 그룹을 생성합니다.
++
+일부 스토리지 배열에서 _host group_이라는 용어는 스토리지 배열의 특정 포트에 대한 호스트 액세스를 지정할 수 있는 구성 매개 변수를 설명하는 데 사용됩니다. 스토리지 시스템마다 이 구성 매개 변수를 설명하는 데 다른 용어를 사용합니다. 각 스토리지 시스템 공급업체에는 호스트 그룹 또는 이와 동등한 호스트 그룹을 생성하는 자체 프로세스가 있습니다.
+
+
+
+* 관련 정보 *

@@ -1,0 +1,24 @@
+---
+permalink: implement-third-party/concept_stand_alone_system_with_two_2_port_array_lun_groups.html 
+sidebar: sidebar 
+keywords: stand-alone, system, two, 2-port, array, lun, groups 
+summary: Fabric 연결 단순 구성에 있는 독립 실행형 ONTAP 시스템에서 ONTAP 시스템에 있는 각 FC 이니시에이터 포트 쌍은 별도의 어레이 LUN 그룹에 액세스합니다. 
+---
+= 2포트 스토리지 LUN 그룹 2개가 있는 독립형 시스템
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Fabric 연결 단순 구성에 있는 독립 실행형 ONTAP 시스템에서 ONTAP 시스템에 있는 각 FC 이니시에이터 포트 쌍은 별도의 어레이 LUN 그룹에 액세스합니다.
+
+이 구성은 시스템에서 실행되는 ONTAP 릴리스에 대해 지원되는 상호 운용성 매트릭스에 나열된 모든 스토리지 어레이에서 사용할 수 있도록 지원됩니다.
+
+다음 그림에서는 패브릭 연결이 단순한 구성을 보여줍니다.
+
+image::../media/multiple_lun_groups_with_stand_alone_6xxx_array_controller.gif[이 그래픽은 주변 텍스트로 설명됩니다.]
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

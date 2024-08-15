@@ -1,0 +1,14 @@
+---
+permalink: install/concept_planning_for_paths_to_array_luns.html 
+sidebar: sidebar 
+keywords: plan, paths, array, luns 
+summary: '경로는 ONTAP 시스템과 스토리지 시스템 간의 물리적 연결입니다. ONTAP 시스템과 스토리지 시스템 간의 단일 장애 지점(SPOF)을 제거하려면 중복 경로가 필요합니다.' 
+---
+= 스토리지 LUN에 대한 경로 계획
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+경로는 ONTAP 시스템과 스토리지 시스템 간의 물리적 연결입니다. ONTAP 시스템과 스토리지 시스템 간의 단일 장애 지점(SPOF)을 제거하려면 중복 경로가 필요합니다.

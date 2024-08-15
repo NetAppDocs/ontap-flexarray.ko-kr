@@ -1,0 +1,36 @@
+---
+permalink: implement-third-party/reference_required_settings_for_ibm_ds_storage_arrays_with_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, settings, ibm ds, storage, arrays, ontap, systems. host type, ds8xxx, configuring, ds8300 9a2 lpar models 
+summary: 스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다. 
+---
+= ONTAP 시스템을 사용하는 IBM DS 스토리지 어레이에 필요한 설정입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다.
+
+
+
+== DS8xxx 스토리지 배열에 필요한 호스트 유형입니다
+
+필요한 호스트 유형 설정은 다음 표에 나와 있습니다.
+
+|===
+| 매개 변수 | 설정 
+
+
+ a| 
+`Host type`
+ a| 
+N 시리즈 게이트웨이
+
+|===
+
+
+== DS8300 9A2 LPAR 모델 구성을 위한 요구 사항
+
+ONTAP 시스템과 상호 작용하도록 DS8300 9A2 LPAR(시스템 논리 파티션) 모델을 설정할 때 중복 경로가 모두 동일한 LPAR에 액세스할 수 있도록 각 어레이 LUN에 대한 액세스를 설정해야 합니다.

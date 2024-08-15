@@ -1,0 +1,43 @@
+---
+permalink: install/concept_implementation_requirements_for_a_multiple_lun_group_configuration.html 
+sidebar: sidebar 
+keywords: implementation, requirements, multiple, lun, group, configuration 
+summary: 스토리지 환경에 여러 LUN 그룹 구성을 구현하여 시스템 성능을 향상시킬 수 있습니다. 이 구성을 구현하려면 ONTAP 시스템과 스토리지 시스템에서 특정 설정 작업을 수행해야 합니다. 
+---
+= 다중 LUN 그룹 구성을 위한 구현 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 환경에 여러 LUN 그룹 구성을 구현하여 시스템 성능을 향상시킬 수 있습니다. 이 구성을 구현하려면 ONTAP 시스템과 스토리지 시스템에서 특정 설정 작업을 수행해야 합니다.
+
+대부분의 스토리지 시스템에서 다중 LUN 그룹 구성이 지원됩니다. 특정 스토리지 어레이에서 이 구성이 지원되는지 확인하려면 _Interoperability Matrix_를 참조하십시오.
+
+스토리지 시스템 관리자와 협력하여 다중 LUN 그룹 구성에 대해 _storage array_에서 다음을 설정해야 합니다.
+
+* 가능한 한 많은 포트를 사용하여 ONTAP 시스템에 할당된 스토리지 LUN에 대한 액세스를 제공합니다.
+* 호스트 그룹(또는 공급업체의 공급업체)을 사용하여 ONTAP 시스템의 각 FC 이니시에이터 포트에 제공할 어레이 LUN 그룹을 정의합니다.
+
+
+ONTAP 시스템에서 다음을 설정하여 다중 LUN 그룹 구성을 구현할 수 있습니다.
+
+* 각 어레이 LUN 그룹에 하나의 FC 이니시에이터 포트 쌍을 사용합니다.
++
+각 FC 이니시에이터 포트 쌍은 중복 경로를 통해 스토리지 시스템의 다른 LUN 그룹에 액세스합니다.
+
+* ONTAP 구성에서 대규모 애그리게이트를 생성하고, 여러 RAID 그룹(패리티 그룹)에서 어레이 LUN을 애그리게이트에 추가합니다.
++
+이렇게 하면 I/O가 더 많은 디스크에 분산됩니다. RAID 그룹 전체에 I/O를 분산하고 하나의 대형 Aggregate를 생성하면 성능이 대폭 향상됩니다.
+
+
+
+다중 LUN 그룹 구성을 구현하려면 _switch_에 다음을 설정해야 합니다.
+
+* ONTAP 시스템의 FC 이니시에이터 포트에서 각 어레이 LUN 그룹을 액세스하는 데 사용할 타겟 포트를 정의하도록 스위치 조닝을 구성합니다.
+
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

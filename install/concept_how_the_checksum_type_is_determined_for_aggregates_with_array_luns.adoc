@@ -1,0 +1,28 @@
+---
+permalink: install/concept_how_the_checksum_type_is_determined_for_aggregates_with_array_luns.html 
+sidebar: sidebar 
+keywords: how, checksum, type, determined, array, lun, aggregates 
+summary: 각 ONTAP 애그리게이트에는 체크섬 유형이 있습니다. 애그리게이트 체크섬 유형은 여기에 추가되는 어레이 LUN의 체크섬 유형에 따라 결정됩니다. 
+---
+= 어레이 LUN 애그리게이트에 대한 체크섬 유형 결정 방법
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+각 ONTAP 애그리게이트에는 체크섬 유형이 있습니다. 애그리게이트 체크섬 유형은 여기에 추가되는 어레이 LUN의 체크섬 유형에 따라 결정됩니다.
+
+애그리게이트의 체크섬 유형은 애그리게이트에 추가된 첫 번째 어레이 LUN의 체크섬 유형에 따라 결정됩니다. 체크섬 유형은 전체 애그리게이트(즉, 애그리게이트의 모든 볼륨에 적용됨)에 적용됩니다. 서로 다른 체크섬 유형의 어레이 LUN을 애그리게이트에서 혼합할 수 없습니다.
+
+* 블록 체크섬 유형 애그리게이트와 함께 type_block_의 어레이 LUN을 사용해야 합니다.
+* type_zoned_의 어레이 LUN은 AZCS 또는 ADVANCED_Zoned 유형 애그리게이트와 함께 사용해야 합니다.
+
+
+aggregate에 어레이 LUN을 추가하기 전에 다음과 같은 이유로 추가할 LUN의 체크섬 유형을 알아야 합니다.
+
+* 서로 다른 체크섬 유형의 어레이 LUN을 동일한 애그리게이트에 추가할 수 없습니다.
+* 하나의 체크섬 유형에서 다른 체크섬 유형으로 집계를 변환할 수 없습니다.
+
+
+애그리게이트를 생성할 때 추가할 어레이 LUN의 수를 지정하거나 추가할 LUN의 이름을 지정할 수 있습니다. 애그리게이트에 추가할 어레이 LUN의 수를 지정하려면 해당 체크섬 유형과 동일한 개수의 어레이 LUN을 사용할 수 있어야 합니다.

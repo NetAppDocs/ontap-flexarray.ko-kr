@@ -1,0 +1,57 @@
+---
+permalink: install/reference_reasons_for_the_incorrect_number_of_luns_in_array_lun_groups.html 
+sidebar: sidebar 
+keywords: reasons, incorrect, number, luns, array, groups, issue, resolve 
+summary: 구성을 검증할 때 스토리지 배열 구성 표시 출력을 확인하여 각 LUN 그룹의 LUN 수가 의도한 대로 표시되는지 확인해야 합니다. LUN 그룹에 있는 LUN의 수가 올바르지 않은 가장 큰 원인은 스토리지 LUN이 ONTAP 시스템에 매핑되지 않았기 때문입니다. 
+---
+= 스토리지 LUN 그룹의 LUN 수가 잘못된 이유
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+구성을 검증할 때는 출력을 확인하여 각 LUN 그룹의 LUN 수가 의도한 대로 나타나는지 확인해야 `storage array config show` 합니다. LUN 그룹에 있는 LUN의 수가 올바르지 않은 가장 큰 원인은 스토리지 LUN이 ONTAP 시스템에 매핑되지 않았기 때문입니다.
+
+
+
+== 스토리지 배열 구성 표시 출력의 예
+
+다음 예와 같이 각 LUN 그룹의 스토리지 LUN 수가 출력에 표시됩니다 `storage array config show` .
+
+[listing]
+----
+mysystem1::> storage array config show
+
+               LUN     LUN
+Node           Group   Count Array Name     Array Target Port  Initiator
+------         ------ ----- -------------- -------------------- ----------
+mysystem1        0      50   DGC_RAID5_1     201A00a0b80fee04     0a
+                                             202A00a0b80fee04     0c
+----
+
+
+== 설명
+
+LUN 그룹에 있을 것으로 예상되는 어레이 LUN이 누락되는 가장 큰 이유는 다음과 같습니다.
+
+* 스토리지 LUN이 ONTAP 시스템에 매핑되지 않았습니다.
+* 매핑 오류가 발생하여 스토리지 LUN이 잘못된 LUN 그룹에 있게 되었습니다.
++
+예를 들어 호스트 그룹 구성이 잘못되었을 수 있습니다.
+
+* 스토리지 시스템이 아직 초기화 중이며 스토리지 LUN을 사용할 수 있게 만드는 중입니다(전환 상태).
+* ONTAP LUN 스캐너가 아직 LUN을 검색하지 못했습니다(전환 상태).
+
+
+
+
+== 문제 해결
+
+. 스토리지 LUN이 ONTAP 시스템에 매핑되지 않은 경우 스토리지 시스템 관리자가 LUN을 매핑해야 합니다.
++
+스토리지 LUN을 호스트에 매핑하는 프로세스는 스토리지 시스템마다 다릅니다.
+
+. 스토리지 LUN이 ONTAP 시스템에 매핑된 경우 조닝 및 호스트 그룹 구성을 확인하십시오.
+. 문제가 해결된 후 를 다시 실행하여 `storage array config show` 문제가 해결되었는지 확인합니다.
+

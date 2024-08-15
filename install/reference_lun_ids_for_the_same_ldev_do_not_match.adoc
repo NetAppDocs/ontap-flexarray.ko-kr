@@ -1,0 +1,169 @@
+---
+permalink: install/reference_lun_ids_for_the_same_ldev_do_not_match.html 
+sidebar: sidebar 
+keywords: lun, ids, same, ldev, not, match 
+summary: '논리적 디바이스(LDEV)는 ONTAP 시스템에 표시되어야 하는 모든 스토리지 스토리지 포트의 동일한 LUN ID에 매핑되어야 합니다. storage error show output은 LUN ID가 일치하지 않는 LDEV를 식별합니다.' 
+---
+= 동일한 LDEV의 LUN ID가 일치하지 않습니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+논리적 디바이스(LDEV)는 ONTAP 시스템에 표시되어야 하는 모든 스토리지 스토리지 포트의 동일한 LUN ID에 매핑되어야 합니다.  `storage errors show`출력에서는 LUN ID가 일치하지 않는 LDEV를 식별합니다.
+
+ONTAP에서는 LUN ID가 일치하지 않는 경우 어레이 LUN을 ONTAP 시스템에 할당할 수 없습니다.
+
+
+
+== 저장 장치 오류가 메시지를 표시합니다
+
+[listing]
+----
+
+HIT-1.4 (4849544143484920443630303035323430303132): This Array LUN is using multiple LUN IDs.  Only one LUN ID per serial number is supported.
+----
+
+
+== 설명
+
+스토리지 배열 구성 중에 다음 오류 중 하나가 발생했습니다.
+
+* LDEV는 여러 타겟 포트에서 ONTAP 시스템의 동일한 FC 이니시에이터 포트에 표시되며 LUN ID가 일치하지 않습니다.
+* 두 LDEV의 LUN ID가 스왑됩니다.
++
+이 경우 각 스토리지 LUN에 대해 오류가 보고됩니다.
+
+* LDEV를 ONTAP 시스템에 제공하는 스토리지 스토리지 포트에 매핑할 때는 동일한 LDEV에 대해 서로 다른 LUN ID가 사용됩니다.
+
+
+[NOTE]
+====
+이 오류는 Hitachi 스토리지 어레이 등 각 포트가 별도로 구성된 스토리지 어레이에서 발생할 가능성이 더 높습니다. IBM 스토리지 시스템과 같은 일부 스토리지 시스템에서는 포트가 별도로 구성되지 않습니다.
+
+====
+* LUN이 매핑된 포트에서 볼륨 세트 주소 지정 설정이 일치하지 않습니다.
++
+EMC Symmetrix 스토리지 시스템의 경우 볼륨 세트 주소 지정 설정이 채널 디렉터 포트에 따라 달라진다는 문제가 발생합니다.
+
+
+
+
+
+== 문제 시나리오
+
+이 시나리오에서는 대부분의 스토리지 시스템에 적용되므로 LUN ID가 일치하지 않는 경우를 설명합니다. 잘못 구성된 볼륨 세트 주소 지정의 컨텍스트에서 이 동일한 오류 메시지에 대한 설명은 볼륨 세트 주소 지정이 일치하지 않음 섹션을 참조하십시오.
+
+xref:reference_volume_set_addressing_is_inconsistent.adoc[볼륨 세트 주소 지정이 일관되지 않습니다]
+
+스토리지 시스템 관리자가 새 LDEV Z를 생성한다고 가정합니다. LDEV Z의 LUN ID는 LUN 3이어야 합니다. 그러나 다음 그림과 같이 관리자는 스토리지 배열 컨트롤러 포트 1A의 LUN 3과 스토리지 배열 컨트롤러 포트 2A의 LUN 4로 LDEV Z를 표시합니다.
+
+image::../media/inconsistent_lun_ids_for_an_ldev.gif[이 그래픽은 주변 텍스트에 설명되어 있습니다.]
+
+이 문제를 해결하려면 LDEV가 매핑된 모든 포트에서 동일한 LUN ID를 LDEV에 할당해야 합니다. 이 예에서는 두 포트 모두에서 LDEV가 LUN ID 3으로 표시되어야 합니다.
+
+
+
+== 문제 해결 및 문제 해결
+
+문제를 해결하려면 스토리지 시스템 관리자가 올바른 LUN ID를 사용하여 LUN을 다시 매핑해야 합니다. ONTAP 명령을 사용하여 스토리지 관리자에게 문제 정보를 제공하는 데 필요한 세부 정보를 얻을 수 있습니다.
+
+.  `storage errors show`출력을 검토하여 LUN ID가 일치하지 않는 스토리지 LUN을 식별합니다.
++
+동일한 LDEV의 LUN ID가 일치하지 않으면 출력에 문제가 있는 LDEV의 일련 번호가 식별됩니다. 예를 들면 다음과 같습니다.
+
++
+[listing]
+----
+
+mysystem1a::> storage errors show
+Disk: HIT-1.4
+UID: 48495441:43484920:44363030:30353234:30303132:00000000:...
+----------
+
+HITACHI_DF600F_1
+----------
+HIT-1.4 (4849544143484920443630303035323430303132): This Array LUN is using multiple LUN IDs.  Only one LUN ID per serial number is supported.
+----
++
+[NOTE]
+====
+이 예제의 UID는 48495441:43484920:44363030:30353234:30303132:00000000:00000000:0000000000:00000000입니다. 이 예제에서는 공백으로 인해 잘립니다.
+
+====
+. 다음 명령을 입력하여 동일한 LDEV에 사용 중인 LUN ID에 대한 세부 정보를 확인합니다. `storage disk show arrayLUNname`
++
+ `storage disk show`이 예제의 출력은 다음과 같습니다.
+
++
+[listing]
+----
+
+mysystem1a::> storage disk show -disk HIT-1.4
+                  Disk: HIT-1.4
+        Container Type: unassigned
+            Owner/Home: -  / -
+               DR Home: -
+                 Array: HITACHI_DF600F_1
+                Vendor: HITACHI
+                 Model: DF600F
+         Serial Number: D600020C000C
+                   UID: 48495441:43484920:44363030:30353234:30303132:00000000:...
+                   BPS: 512
+         Physical Size: -
+              Position: present
+Checksum Compatibility: block
+             Aggregate: -
+                  Plex: -
+Paths:
+                     LUN  Initiator Side  Target Side
+Controller Initiator ID   Switch Port     Switch Port      Acc Use  Target Port     TPGN...
+---------- --------- -------------------- ----------------- --- ---  --------------- ----
+mysystem1a   0c       4  vgci9148s76:1-2  vgci9148s76:1-9  AO  INU  50060e80004291c1  1
+mysystem1a   0a       3  vgbr300s89:1     vgbr300s89:9     S   RDY  50060e80004291c0  2
+mysystem1b   0c       4  vgci9148s76:1-4  vgci9148s76:1-9  AO  INU  50060e80004291c1  1
+mysystem1b   0a       3  vgbr300s89:3     vgbr300s89:10    S   RDY  50060e80004291c2  2
+
+Errors:
+HIT-1.4 (4849544143484920443630303035323430303132): This Array LUN is using multiple LUN IDs.  Only one LUN ID per serial number is supported.
+----
+
+
+[NOTE]
+====
+이 예제의 UID는 48495441:43484920:44363030:30353234:30303132:00000000:00000000:0000000000:00000000입니다. 이 예제에서는 공백으로 인해 잘립니다.
+
+====
+Storage disk show 출력의 Paths 섹션에서 LUN ID를 보면 LUN ID 3과 4가 모두 이 LDEV에 사용되고 있음을 알 수 있습니다.
+
+. LDEV에 대해 잘못된 LUN ID를 확인합니다.
++
+이 예에서는 LUN ID 4가 잘못된 LUN ID입니다.
+
+. ONTAP에서 명령을 사용하여 `storage path quiesce` 스토리지 LUN에 대한 잘못된 경로를 중지합니다.
++
+다음 예에서는 이니시에이터 0c의 중지 중인 경로에 대해 명령에 추가할 수 있는 옵션을 보여 `storage path quiesce` 줍니다. -- LUN ID 4.
+
++
+[listing]
+----
+
+storage path quiesce -node mysystem1a -initiator 0c -target-wwpn 50060e80004291c1 -lun-number 4
+----
++
+이 `storage path quiesce` 명령은 특정 경로의 특정 스토리지 LUN에 대한 입출력을 일시적으로 일시 중단합니다. 일부 스토리지 시스템에서는 스토리지 LUN을 제거하거나 이동할 일정 기간 동안 입출력을 중단해야 합니다.
+
++
+경로가 정지된 후에는 ONTAP에서 해당 LUN을 더 이상 인식할 수 없습니다.
+
+. 스토리지 배열의 작업 타이머가 만료될 때까지 1분 정도 기다립니다.
++
+모든 스토리지 시스템에서 일정 기간 동안 입출력을 중단해야 하는 것은 아니지만, 그렇게 하는 것이 좋습니다.
+
+. 스토리지 배열에서 이 시나리오에서 올바른 LUN ID, LUN ID 3을 사용하여 LUN을 타겟 포트에 다시 매핑합니다.
++
+다음에 ONTAP 검색 프로세스가 실행되면 새 스토리지 LUN을 검색합니다. 1분마다 검색이 실행됩니다.
+
+. ONTAP 검색이 완료되면 ONTAP에서 다시 실행하여 `storage array config show` 더 이상 오류가 없는지 확인합니다.
+

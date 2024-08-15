@@ -1,0 +1,24 @@
+---
+permalink: implement-third-party/concept_single_4_port_array_lun_group_configuration.html 
+sidebar: sidebar 
+keywords: single, 4-port, array, lun, group, configuration 
+summary: 이 구성에는 HA 쌍의 단일 ONTAP FC 이니시에이터 포트에서 액세스되는 각 타겟 포트가 있는 단일 4포트 LUN 그룹이 포함됩니다. 조닝으로 인해 각 ONTAP 시스템에서 특정 어레이 LUN에 대해 두 개의 경로만 허용됩니다. 
+---
+= 단일 4포트 스토리지 LUN 그룹 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 구성에는 HA 쌍의 단일 ONTAP FC 이니시에이터 포트에서 액세스되는 각 타겟 포트가 있는 단일 4포트 LUN 그룹이 포함됩니다. 조닝으로 인해 각 ONTAP 시스템에서 특정 어레이 LUN에 대해 두 개의 경로만 허용됩니다.
+
+이 구성은 시스템에서 실행되는 ONTAP 릴리스에 대해 지원되는 상호 운용성 매트릭스에 나열된 모든 스토리지 어레이에서 사용할 수 있도록 지원됩니다.
+
+다음 그림에서는 이 구성을 보여 줍니다.
+
+image::../media/one_4_port_array_lun_gp.gif[이 그래픽은 주변 텍스트로 설명됩니다.]
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

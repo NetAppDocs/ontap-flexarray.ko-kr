@@ -1,0 +1,111 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_hitachi_storage_arrays_with_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, hitachi, storage, arrays, ontap, systems, ams, hus, vsp, hus vm, workaround 
+summary: 스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다. 
+---
+= ONTAP 시스템이 포함된 Hitachi 스토리지 어레이에 필요한 매개 변수
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다.
+
+
+
+== AMS 및 HUS 스토리지 어레이에 필요한 시스템 매개 변수입니다
+
+설정해야 하는 매개 변수는 다음 표에 나와 있습니다.
+
+|===
+| 매개 변수 | 설정 
+
+
+ a| 
+`Mapping mode`
+ a| 
+활성화됨
+
+
+
+ a| 
+`Host group security`
+ a| 
+활성화됨
+
+
+
+ a| 
+`Mode Setting > Common Setting`
+ a| 
+표준 모드
+
+
+
+ a| 
+`Platform`
+ a| 
+지정되지 않음
+
+
+
+ a| 
+`Middleware`
+ a| 
+지정되지 않음
+
+|===
+
+
+== VSP 및 HUS VM 스토리지에 필요한 시스템 매개 변수입니다
+
+설정해야 하는 매개 변수는 다음 표에 나와 있습니다.
+
+|===
+| 매개 변수 | 설정 
+
+
+ a| 
+`Host mode`
+ a| 
+표준 또는 00
+
+
+
+ a| 
+`Port security`
+ a| 
+활성화됨
+
+
+
+ a| 
+[NOTE]
+====
+각 이니시에이터-타겟 포트 쌍에 대해 기본 호스트 그룹과 별도의 호스트 그룹을 생성해야 합니다.
+
+====
+|===
+ONTAP 시스템을 Hitachi 스토리지 시스템에 연결하기 위해 스위치를 조닝하기 전에 스토리지 시스템 매개 변수를 설정하고 LUN을 호스트 그룹에 매핑해야 합니다.
+
+스토리지 어레이 매개 변수를 설정하고 LUN을 호스트 그룹에 매핑하기 전에 ONTAP FC 이니시에이터 포트를 Hitachi 어레이 대상 포트로 조닝할 경우 ONTAP 인터페이스에 제공되는 LUN이 표시되지 않을 수 있습니다.
+
+이 경우 ONTAP는 다음 EMS 메시지 중 하나를 생성합니다.
+
+[listing]
+----
+[fci.device.login.reject:info] The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x9 'Invalid R_CTL Field', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+[listing]
+----
+[fci.device.login.reject:info]: The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x3 'Nx_Port Not Available, Temporary', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+
+
+== 해결 방법
+
+매개 변수를 설정하고 LUN을 호스트 그룹에 매핑하기 전에 조닝이 구성된 경우 Hitachi 스토리지 어레이에서 매핑된 어레이 LUN을 강제로 재검색하기 위해 경로 재초기화를 수행하여 LUN이 표시되지 않는 문제를 해결할 수 있습니다. 이 문제에 대한 해결 방법은 Hitachi 스토리지 어레이에서 LUN이 표시되지 않는 경우 해결 방법 섹션을 참조하십시오.
+
+xref:reference_workaround_when_luns_are_not_visible_with_hitachi_storage_arrays.adoc[Hitachi 스토리지 시스템에서 LUN이 표시되지 않는 경우의 해결 방법]

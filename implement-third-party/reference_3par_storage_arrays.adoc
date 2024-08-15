@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/reference_3par_storage_arrays.html 
+sidebar: sidebar 
+keywords: 3par, storage, arrays 
+summary: 스토리지 어레이를 어레이 LUN을 사용하는 ONTAP 시스템과 작동하도록 구성할 때는 특정 요구사항을 충족해야 합니다. 이러한 요구 사항에는 스토리지 시스템에 대한 구성 매개 변수 설정 및 지원되는 구성만 구축하는 작업이 포함됩니다. 
+---
+= 3PAR 스토리지 어레이
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 어레이를 어레이 LUN을 사용하는 ONTAP 시스템과 작동하도록 구성할 때는 특정 요구사항을 충족해야 합니다. 이러한 요구 사항에는 스토리지 시스템에 대한 구성 매개 변수 설정 및 지원되는 구성만 구축하는 작업이 포함됩니다.

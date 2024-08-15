@@ -1,0 +1,38 @@
+---
+permalink: install/reference_fc_initiator_ports_required_for_connection_with_disks.html 
+sidebar: sidebar 
+keywords: fc initiator, ports, required, connection, native, disks 
+summary: FC 이니시에이터 포트를 통해 V-Series 시스템을 기본 디스크 쉘프에 연결해야 합니다. 연결에 필요한 이니시에이터 포트 수는 V-Series 시스템이 독립 실행형 시스템인지, HA 쌍인지에 따라 다릅니다. 
+---
+= 기본 디스크에 연결하는 데 필요한 FC 이니시에이터 포트 수
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FC 이니시에이터 포트를 통해 V-Series 시스템을 기본 디스크 쉘프에 연결해야 합니다. 연결에 필요한 이니시에이터 포트 수는 V-Series 시스템이 독립 실행형 시스템인지, HA 쌍인지에 따라 다릅니다.
+
+다음 표에는 시스템 구성에 따라 V-Series 시스템을 기본 디스크 쉘프에 연결하는 데 필요한 FC 이니시에이터 포트 수가 나와 있습니다.
+
+|===
+| 구성 | FC 이니시에이터 포트의 수입니다 
+
+
+ a| 
+독립형 시스템
+ a| 
+* 하나의 루프를 사용하는 경우 FC 이니시에이터 포트 1개를 사용합니다
+* 2개의 루프를 연결하는 경우 FC 이니시에이터 포트 2개(각 루프에 대해 하나씩)가 있습니다
+
+
+
+
+ a| 
+HA 쌍
+ a| 
+* 다중 경로 스토리지를 사용하는 경우 각 루프에 대해 2개의 FC 이니시에이터 포트를 사용합니다
+* 다중 경로 스토리지를 사용하지 않는 경우 구성의 각 루프에 대해 컨트롤러당 하나의 FC 이니시에이터 포트를 사용합니다
+
+
+|===

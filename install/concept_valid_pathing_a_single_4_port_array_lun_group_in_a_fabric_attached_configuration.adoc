@@ -1,0 +1,36 @@
+---
+permalink: install/concept_valid_pathing_a_single_4_port_array_lun_group_in_a_fabric_attached_configuration.html 
+sidebar: sidebar 
+keywords: valid, path, single, 4, port, array, lun, group, fabric attached, configuration 
+summary: 단일 4포트 어레이 LUN 그룹 구성은 모든 ONTAP 릴리스에 대해 모든 스토리지 시스템에서 작동합니다. 
+---
+= 유효한 경로 지정: Fabric 연결 구성의 단일 4포트 어레이 LUN 그룹입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+단일 4포트 어레이 LUN 그룹 구성은 모든 ONTAP 릴리스에 대해 모든 스토리지 시스템에서 작동합니다.
+
+다음 그림에서는 단일 4포트 스토리지 LUN 그룹을 사용하는 구성의 경로를 보여 줍니다.
+
+image::../media/one_4_port_array_lun_gp.gif[이 그래픽은 주변 텍스트로 설명됩니다.]
+
+단일 4포트 LUN 그룹을 사용하는 이 구성에서는 스토리지 LUN이 스토리지 시스템의 포트 4개에 매핑됩니다. 어레이 LUN 그룹은 다양한 어레이 타겟 포트에 있는 HA 쌍의 두 노드에 제공됩니다. 그러나 각 노드는 두 개의 경로만 통해 종단간 스토리지 LUN을 볼 수 있습니다. 노드의 각 FC 이니시에이터 포트가 단일 타겟 어레이 포트에만 액세스할 수 있도록 조닝을 구성합니다.
+
+예상 LUN 그룹 수가 설정되었는지 확인할 때 출력을 유효한 출력과 비교하는 것이 좋습니다 `storage array config show` . 다음 `storage array config show` 출력 예는 단일 스토리지 LUN 그룹인 이 구성에 대해 예상되는 출력을 보여 줍니다.
+
+[listing]
+----
+vs::> storage array config show
+             LUN   LUN
+Node         Group Count  Array Name     Array Target Port     Initiator
+------------ ----- ----- ------------- ----------------------- ---------
+vs1            1    10   DGC_RAID5_1      50050763030301241A     0a
+                                          50050763031301242A     0c
+vs2            1    10   DGC_RAID5_1      50050763030881241B     0a
+                                          50050763031881242B     0c
+
+4 entries were displayed.
+----

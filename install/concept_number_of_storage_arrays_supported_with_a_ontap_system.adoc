@@ -1,0 +1,39 @@
+---
+permalink: install/concept_number_of_storage_arrays_supported_with_a_ontap_system.html 
+sidebar: sidebar 
+keywords: considerations, connect, multiple, storage, arrays, ontap, system 
+summary: ONTAP 시스템에서 지원되는 스토리지 어레이 모델에 따라 여러 스토리지 어레이 또는 단일 스토리지 어레이를 ONTAP 시스템에 연결할 수 있습니다. 
+---
+= 여러 스토리지 시스템을 ONTAP 시스템에 연결할 때의 고려 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템에서 지원되는 스토리지 어레이 모델에 따라 여러 스토리지 어레이 또는 단일 스토리지 어레이를 ONTAP 시스템에 연결할 수 있습니다.
+
+[NOTE]
+====
+상호 운용성 매트릭스는 ONTAP 시스템에서 하나의 스토리지 어레이만 지원하는 모든 스토리지 어레이 모델을 식별합니다.
+
+====
+여러 스토리지 어레이를 ONTAP 시스템에 연결할 때는 다음 사항을 고려하십시오.
+
+* 지원되는 동일한 스토리지 어레이 모델의 여러 어레이를 ONTAP 시스템에 연결할 수 있는 경우 구축할 수 있는 스토리지 어레이 수에 제한이 없습니다.
+* 스토리지 어레이는 동일한 지원 공급업체나 다른 공급업체에서 제공받을 수 있습니다.
++
+스토리지 어레이가 같은 공급업체의 제품이라면 모두 같은 제품군 또는 다른 제품군의 제품일 수 있습니다.
+
+
+
+[NOTE]
+====
+동일한 제품군의 스토리지 시스템은 동일한 성능 및 페일오버 특성을 공유합니다. 예를 들어, 같은 제품군의 구성원은 모두 액티브-액티브 페일오버를 수행하거나 모두 액티브-패시브 페일오버를 수행합니다. 스토리지 어레이 제품군을 확인하는 데 둘 이상의 요소를 사용할 수 있습니다. 예를 들어, 다른 특성이 동일하더라도 아키텍처가 다른 스토리지 어레이는 다른 제품군에 속할 수 있습니다.
+
+====
+* 관련 정보 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["타사 스토리지를 위한 FlexArray 가상화 구축"]
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

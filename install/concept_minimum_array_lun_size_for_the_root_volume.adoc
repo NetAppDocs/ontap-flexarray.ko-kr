@@ -1,0 +1,20 @@
+---
+permalink: install/concept_minimum_array_lun_size_for_the_root_volume.html 
+sidebar: sidebar 
+keywords: array, lun, size, required, root, volume 
+summary: 루트 볼륨에 시스템 파일, 로그 파일 및 코어 파일을 위한 충분한 공간이 있는지 확인하려면 루트 볼륨의 크기를 지원되는 최소 어레이 LUN 크기보다 크게 설정해야 합니다. 시스템 문제가 발생할 경우 이러한 파일을 기술 지원 부서에 제공해야 합니다. 
+---
+= 루트 볼륨에 필요한 어레이 LUN 크기입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+루트 볼륨에 시스템 파일, 로그 파일 및 코어 파일을 위한 충분한 공간이 있는지 확인하려면 루트 볼륨의 크기를 지원되는 최소 어레이 LUN 크기보다 크게 설정해야 합니다. 시스템 문제가 발생할 경우 이러한 파일을 기술 지원 부서에 제공해야 합니다.
+
+_Hardware Universe_에는 루트 볼륨에 대한 최소 스토리지 LUN 크기가 나열됩니다.
+
+* 관련 정보 *
+
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]

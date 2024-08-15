@@ -1,0 +1,88 @@
+---
+permalink: install/concept_example_of_zoning_in_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: example, zone, configuration, storage, arrays, single, 4-port, lun, group 
+summary: 조닝을 위해 스위치를 구성할 때 LUN 보안을 사용하면 다른 호스트에 매핑된 LUN이 다른 호스트에 표시되지 않습니다. 
+---
+= 스토리지 어레이가 있는 구성의 조닝 예
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+조닝을 위해 스위치를 구성할 때 LUN 보안을 사용하면 다른 호스트에 매핑된 LUN이 다른 호스트에 표시되지 않습니다.
+
+
+
+== 단일 4포트 LUN 그룹 구성에서 조닝
+
+image::../media/one_4_port_array_lun_gp.gif[이 그래픽은 주변 텍스트로 설명됩니다.]
+
+다음 표는 HA 쌍의 ONTAP 시스템 구성에 대한 조닝(zoning)을 보여줍니다. 권장되는 조닝 전략은 단일 이니시에이터 조닝입니다.
+
+|===
+| Zone(영역) | ONTAP 시스템 |  | 스토리지 시스템 |  
+
+
+ a| 
+스위치 1
+
+
+
+ a| 
+z1를 참조하십시오
+ a| 
+vs1를 참조하십시오
+ a| 
+포트 0a
+ a| 
+컨트롤러 1
+ a| 
+포트 1A
+
+
+
+ a| 
+z2를 참조하십시오
+ a| 
+vs2를 참조하십시오
+ a| 
+포트 0a
+ a| 
+컨트롤러 1
+ a| 
+포트 1B
+
+
+
+ a| 
+스위치 2
+
+
+
+ a| 
+z3를 참조하십시오
+ a| 
+vs1를 참조하십시오
+ a| 
+포트 0c
+ a| 
+컨트롤러 2
+ a| 
+포트 2A
+
+
+
+ a| 
+z4를 참조하십시오
+ a| 
+vs2를 참조하십시오
+ a| 
+포트 0c
+ a| 
+컨트롤러 2
+ a| 
+포트 2B
+
+|===

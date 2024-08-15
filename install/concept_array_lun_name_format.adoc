@@ -1,0 +1,33 @@
+---
+permalink: install/concept_array_lun_name_format.html 
+sidebar: sidebar 
+keywords: array, lun, name, format 
+summary: 스토리지 LUN에 할당된 이름은 클러스터 전체에서 고유한 이름을 확인하기 위해 새로운 형식으로 지정됩니다. 
+---
+= 스토리지 LUN 이름 형식입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 LUN에 할당된 이름은 클러스터 전체에서 고유한 이름을 확인하기 위해 새로운 형식으로 지정됩니다.
+
+스토리지 LUN 이름은 두 가지 구성 요소로 구성되며 다음과 같습니다.
+
+``<array_prefix>.<offset>``예를 들어, `EMC-1.1`
+
+* 은 `array_prefix` ONTAP가 각 스토리지 배열에 기본적으로 할당하는 고유한 접두사입니다.
++
+이 필드는 이 경우 로 ``<array_name-array_instance> (EMC-1`` 구성됩니다.)
+
++
+`array_name` 공급업체 이름의 처음 세 글자로 나타낼 수 있습니다.
+
++
+동일한 공급업체의 스토리지가 두 개 이상 있는 경우 의 값은 `array_instance` 오름차순으로 진행됩니다.
+
+* 오프셋은 ONTAP가 각 LUN에 할당하는 오름차순 가상 디스크 번호입니다. 호스트의 LUN ID와 독립적입니다.
+
+
+명령을 사용하여 필드를 수정할 수 ``<array_prefix>`` `storage array modify -name -prefix` 있습니다.

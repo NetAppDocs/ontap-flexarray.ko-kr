@@ -1,0 +1,20 @@
+---
+permalink: install/concept_zoning_recommendation_for_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: zone, recommendation, configuration, storage, arrays 
+summary: '스토리지 어레이를 사용하는 구성에 권장되는 조닝 유형은 1:1 조닝입니다. 1:1 조닝을 사용할 경우 각 존에는 단일 FC 이니시에이터 포트와 단일 스토리지 어레이 타겟 포트가 포함됩니다.' 
+---
+= 스토리지 어레이를 사용한 구성에 대한 조닝 권장 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 어레이를 사용하는 구성에 권장되는 조닝 유형은 1:1 조닝입니다. 1:1 조닝을 사용할 경우 각 존에는 단일 FC 이니시에이터 포트와 단일 스토리지 어레이 타겟 포트가 포함됩니다.
+
+1:1 조닝을 생성할 때의 이점은 다음과 같습니다.
+
+* 특정 스토리지 LUN에 액세스할 수 있는 포트 수를 제한합니다.
+* FC Initiator ONTAP 시스템이 서로 검색하지 않기 때문에 검색 및 부팅 시간이 개선할 수 있습니다.
+

@@ -1,0 +1,62 @@
+---
+permalink: install/concept_example_configuration_shared_target_ports.html 
+sidebar: sidebar 
+keywords: example, configuration, shared, target, ports, multiple, initiator 
+summary: 최대 2개의 ONTAP FC 이니시에이터 포트를 스토리지 시스템의 단일 타겟 포트에 연결할 수 있습니다. 
+---
+= 구성 예: 공유 타겟 포트
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+최대 2개의 ONTAP FC 이니시에이터 포트를 스토리지 시스템의 단일 타겟 포트에 연결할 수 있습니다.
+
+조닝을 위한 모범 사례는 각 FC Initiator-Target 포트 쌍을 별도의 존(1:1)에 배치하는 것입니다.
+
+
+
+== 여러 이니시에이터 포트에 연결된 공유 타겟 포트입니다
+
+다음 그림에서는 서로 다른 ONTAP 시스템의 여러 FC 이니시에이터 포트와 대상 포트를 공유하기 위한 연결 및 조닝을 보여 줍니다.
+
+다음 그림의 실선은 시스템 VS1의 FC 이니시에이터 포트로부터의 접속을 보여 주며 점선은 시스템 VS2의 FC 이니시에이터 포트로부터의 접속을 보여 줍니다.
+
+image::../media/shared_target_ports.gif[공유 대상 포트 구성에 대한 연결 및 조닝은 주변 텍스트에 설명되어 있습니다.]
+
+다음 표는 HA 쌍의 컨트롤러에서 FC 이니시에이터 포트 두 개를 공유하는 한 대상 포트의 예에 대한 1:1 조닝 정의를 보여줍니다.
+
+|===
+| Zone(영역) | ONTAP 시스템 및 FC 이니시에이터 포트 | 스토리지 시스템 
+
+
+ a| 
+* 스위치 1 *
+
+
+
+ a| 
+z1를 참조하십시오
+| VS1:0a | 컨트롤러 1: 포트 1A 
+
+
+ a| 
+z3를 참조하십시오
+| VS2:0a입니다 |  
+
+
+ a| 
+* 스위치 2 *
+
+
+
+ a| 
+z2를 참조하십시오
+| VS1: 0c | 컨트롤러 2: 포트 2A 
+
+
+ a| 
+z4를 참조하십시오
+| VS2: 0c |  
+|===

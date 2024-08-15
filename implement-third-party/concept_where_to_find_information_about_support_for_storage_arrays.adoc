@@ -1,0 +1,60 @@
+---
+permalink: implement-third-party/concept_where_to_find_information_about_support_for_storage_arrays.html 
+sidebar: sidebar 
+keywords: find, information, ontap, support, storage, arrays 
+summary: 모든 ONTAP 릴리즈에서 동일한 기능, 구성, 시스템 모델 및 스토리지 어레이 모델을 지원하는 것은 아닙니다. 배포를 계획하는 동안 ONTAP 지원 정보를 살펴보고 구현 중인 모든 시스템에 대한 ONTAP 하드웨어 및 소프트웨어 요구사항을 준수하는지 확인해야 합니다. 
+---
+= 스토리지 어레이에 대한 ONTAP 지원에 대한 정보를 찾을 수 있는 위치입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+모든 ONTAP 릴리즈에서 동일한 기능, 구성, 시스템 모델 및 스토리지 어레이 모델을 지원하는 것은 아닙니다. 배포를 계획하는 동안 ONTAP 지원 정보를 살펴보고 구현 중인 모든 시스템에 대한 ONTAP 하드웨어 및 소프트웨어 요구사항을 준수하는지 확인해야 합니다.
+
+다음 표에는 ONTAP 시스템과 관련된 하드웨어 및 소프트웨어 요구 사항에 대한 세부 정보가 포함된 정보 소스가 나와 있습니다.
+
+[cols="2*"]
+|===
+| 자세한 정보... | 여기 보셔야 합니다... 
+
+
+ a| 
+다음을 포함한 스토리지 시스템을 사용한 ONTAP 구축 작업:
+
+* 구현 계획
+* ONTAP 시스템 및 스토리지 연결
+* 설치를 확인하는 중입니다
+
+ a| 
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray 가상화 설치 요구 사항 및 참조 자료"]
+
+
+
+ a| 
+다음을 포함한 장치에서 작동하는 ONTAP:
+
+* 지원되는 스토리지 어레이 및 스토리지 어레이 펌웨어
+* 지원되는 스위치 및 스위치 펌웨어
+* 스토리지 어레이가 스토리지 어레이 펌웨어의 무중단(라이브) 업그레이드를 지원하는지 여부
+* 스토리지 배열에서 MetroCluster 구성이 지원되는지 여부
+
+ a| 
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]
+
+
+
+ a| 
+다음을 포함한 릴리스 및 플랫폼의 ONTAP 제한:
+
+* 루트 볼륨 및 스페어 코어 어레이 LUN의 최소 어레이 LUN 크기를 포함한 최소 및 최대 어레이 LUN 크기
+* 어레이 LUN이 포함된 애그리게이트의 최소 애그리게이트 크기
+* 지원되는 블록 크기
+* 최소 및 최대 용량
+* 인근 지역 제한
+
+ a| 
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]
+
+|===

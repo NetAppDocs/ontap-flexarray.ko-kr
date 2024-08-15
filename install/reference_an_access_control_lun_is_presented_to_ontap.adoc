@@ -1,0 +1,50 @@
+---
+permalink: install/reference_an_access_control_lun_is_presented_to_ontap.html 
+sidebar: sidebar 
+keywords: access, control, lun, presented, ontap 
+summary: ONTAP는 액세스 제어 스토리지 LUN을 지원하지 않습니다. 스토리지 오류는 액세스 제어 LUN이 제공되는 경우 출력 알림을 표시합니다. 
+---
+= 액세스 제어 LUN이 ONTAP에 제공됩니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP는 액세스 제어 스토리지 LUN을 지원하지 않습니다.  `storage errors show`액세스 제어 LUN이 표시되는 경우 출력에 경고가 표시됩니다.
+
+
+
+== 저장 장치 오류가 메시지를 표시합니다
+
+[listing]
+----
+
+NAME (UID): This array LUN is an access control LUN. It is not supported and should be masked off or disabled.
+----
+
+
+== 설명
+
+ONTAP은 스토리지 어레이 LUN만 지원합니다. 예를 들어, 스토리지 LUN E-Series이 ONTAP에 제공되면 `storage array config show` 출력은 정상적으로 표시되고, 다음 예와 같이 LUN 그룹의 액세스 제어 LUN이 표시됩니다. 화면 하단의 경고 메시지는 문제를 나타냅니다. 액세스 제어 LUN이 제공되었고 LUN이 무엇인지 확인하려면 를 실행해야 `storage errors show` 합니다.
+
+[listing]
+----
+
+mysystem1::> storage array config show
+
+          LUN     LUN
+Node      Group   Count  Array Name    Array Target Port       Initiator
+------    ------  -----  ------------ ------------------       --------
+mysystem1   0       1    NETAPP_INF_1  20:1A:00:a0:b8:0f:ee:04   0a
+                                       20:2A:00:a0:b8:0f:ee:04   0c
+
+Warning: Configuration errors were detected.  Use 'storage errors show' for detailed information.
+----
+
+
+== 문제 해결 및 문제 해결
+
+. 스토리지 시스템에서 액세스 제어 LUN을 마스킹합니다.
+. ONTAP에서 를 다시 실행하여 `storage errors show` 액세스 제어 LUN이 더 이상 ONTAP에 표시되지 않는지 확인합니다.
+

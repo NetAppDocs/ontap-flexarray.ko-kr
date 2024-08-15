@@ -1,0 +1,67 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_hp_xp_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameters, hp, xp, storage, arrays, ontap, workaround 
+summary: 이 스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에 특정 매개 변수 설정이 필요합니다. 
+---
+= ONTAP를 사용하는 HP XP 스토리지 어레이에 필요한 매개 변수입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에 특정 매개 변수 설정이 필요합니다.
+
+
+
+== HP XP 스토리지 어레이에 필요한 시스템 매개 변수입니다
+
+다음 표에는 필요한 매개변수 설정이 나와 있습니다.
+
+|===
+| 매개 변수 | 설정 
+
+
+ a| 
+`Host mode`
+ a| 
+표준 또는 00
+
+
+
+ a| 
+`Port security`
+ a| 
+활성화됨
+
+
+
+ a| 
+[NOTE]
+====
+각 이니시에이터-타겟 포트 쌍에 대해 기본 호스트 그룹과 별도의 호스트 그룹을 생성해야 합니다.
+
+====
+|===
+ONTAP 시스템을 HP XP 스토리지 어레이에 연결하기 위해 스위치를 조닝하기 전에 스토리지 시스템 매개 변수를 설정하고 LUN을 호스트 그룹에 매핑해야 합니다.
+
+스토리지 배열 매개 변수가 설정되고 LUN이 호스트 그룹에 매핑되기 전에 ONTAP FC 이니시에이터 포트가 HP XP 어레이 대상 포트와 조닝되는 경우 ONTAP 인터페이스에 표시되는 LUN이 표시되지 않을 수 있습니다.
+
+이 경우 ONTAP는 다음 EMS 메시지 중 하나를 생성합니다.
+
+[listing]
+----
+[fci.device.login.reject:info] The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x9 'Invalid R_CTL Field', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+[listing]
+----
+[fci.device.login.reject:info]: The PLOGI transmitted by port XX was rejected by port_id 0xYYYY with reason code 0x3 'Nx_Port Not Available, Temporary', explanation code 0x29 'Insufficient Resources to Support Login'
+----
+
+
+== 해결 방법
+
+매개 변수를 설정하고 LUN을 호스트 그룹에 매핑하기 전에 조닝(zoning)을 구성한 경우 경로 재초기화를 수행하여 HP XP 스토리지 어레이에서 매핑된 스토리지 LUN을 강제로 다시 검색함으로써 LUN이 표시되지 않는 문제를 해결할 수 있습니다.
+
+xref:reference_workaround_when_luns_are_not_visible_with_hp_xp_storage_arrays.adoc[HP XP 스토리지 배열에 LUN이 표시되지 않는 경우의 해결 방법]

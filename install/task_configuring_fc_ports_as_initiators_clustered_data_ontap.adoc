@@ -1,0 +1,57 @@
+---
+permalink: install/task_configuring_fc_ports_as_initiators_clustered_data_ontap.html 
+sidebar: sidebar 
+keywords: configure, fc ports, initiators 
+summary: 개별 FC 포트를 ONTAP 시스템에서 이니시에이터로 구성할 수 있습니다. 이니시에이터 모드를 사용하면 포트를 스토리지 어레이에 연결할 수 있습니다. 
+---
+= FC 포트를 이니시에이터로 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+개별 FC 포트를 ONTAP 시스템에서 이니시에이터로 구성할 수 있습니다. 이니시에이터 모드를 사용하면 포트를 스토리지 어레이에 연결할 수 있습니다.
+
+.단계
+. * 선택 사항: * 어댑터 포트에 LIF가 이미 구성되어 있으면 명령을 사용하여 모든 LIF `network interface delete` 를 삭제합니다.
++
+LIF가 포트 세트에 있는 경우 LIF를 삭제하기 전에 포트 세트에서 LIF를 제거해야 합니다.
+
++
+다음 예제는 SVM vs3에서 LIF를 삭제하는 방법을 보여줍니다. `network interface delete -vserver vs3 -lif lif2,lif0`
+
+. 명령을 사용하여 포트를 오프라인 상태로 `network fcp adapter modify` 전환합니다.
++
+다음 예에서는 노드 sysnode에서 포트 0c를 오프라인 상태로 전환하는 방법을 보여줍니다. `network fcp adapter modify -node sysnode1 -adapter 0c -state down`
+
+. 명령을 사용하여 `system hardware unified-connect modify` 오프라인 포트를 타겟에서 이니시에이터로 변경합니다.
++
+다음 예제는 0c의 포트 유형을 타겟에서 이니시에이터로 변경하는 방법을 보여줍니다. `system node hardware unified-connect modify -node sysnode1 -adapter 0c -type initiator`
+
+. 변경한 어댑터를 호스팅하는 노드를 재부팅합니다.
+. 명령을 사용하여 `system hardware unified-connect show` FC 포트가 구성에 맞게 올바르게 구성되었는지 확인하십시오.
++
+다음 예제는 0c에 대한 포트 유형의 변경을 보여줍니다.
+
++
+`system node hardware unified-connect show -node sysnode1`
+
++
+[listing]
+----
+
+
+                       Current  Current    Pending  Pending
+Node          Adapter  Mode     Type       Mode     Type       Status
+------------  -------  -------  ---------  -------  ---------  -----------
+sysnode1      0a       fc       target     -        -          online
+sysnode1      0b       fc       target     -        -          online
+sysnode1      0c       fc       initiator  -        -          offline
+sysnode1      0d       fc       target     -        -          online
+----
+. 명령을 사용하여 `storage enable adapter` 오프라인 포트를 다시 온라인 상태로 전환합니다.
++
+다음 예에서는 포트 0c를 온라인 상태로 만드는 방법을 보여 줍니다. `node run -node sysnode1 -command storage enable adapter -e 0c`
+
+

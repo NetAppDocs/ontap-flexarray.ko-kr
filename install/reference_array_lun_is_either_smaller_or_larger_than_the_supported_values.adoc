@@ -1,0 +1,69 @@
+---
+permalink: install/reference_array_lun_is_either_smaller_or_larger_than_the_supported_values.html 
+sidebar: sidebar 
+keywords: array, lun, size, smaller, larger, supported, values, show, message, storage, errors 
+summary: 스토리지 LUN 크기를 계획할 때는 ONTAP 최소 및 최대 스토리지 LUN 크기 제한을 준수해야 합니다. 이러한 제한 사항은 ONTAP 릴리즈에 따라 다릅니다. 스토리지 오류 show output은 크기 요구 사항을 충족하지 않는 스토리지 LUN을 식별합니다. 
+---
+= 스토리지 LUN 크기가 지원되는 값보다 작거나 큽니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 LUN 크기를 계획할 때는 ONTAP 최소 및 최대 스토리지 LUN 크기 제한을 준수해야 합니다. 이러한 제한 사항은 ONTAP 릴리즈에 따라 다릅니다.  `storage errors show`출력에서는 크기 요구 사항을 충족하지 않는 스토리지 LUN을 식별합니다.
+
+크기 문제가 있는 어레이 LUN은 ONTAP 시스템에 할당할 수 없습니다.
+
+
+
+== 저장 장치 오류가 메시지를 표시합니다
+
+[listing]
+----
+NAME (Serial #): This array LUN is too large and is not usable. The maximum array LUN size supported is xTB
+----
+또는
+
+[listing]
+----
+NAME (Serial #): This array LUN is too small and is not usable. The minimum array LUN size supported is xGB.
+----
+
+
+== 설명
+
+이 메시지는 스토리지 LUN이 ONTAP에서 지원하는 최소 스토리지 LUN 크기보다 작거나 지원되는 최대 크기를 초과할 때 생성됩니다. 스토리지 LUN 크기가 지원되는 값보다 크거나 작은 주된 이유는 다음과 같습니다.
+
+* 스토리지 시스템 관리자는 공급업체의 측정 단위 정의에 따라 ONTAP 스토리지 LUN 크기 제한을 동등한 한도로 변환하지 않았습니다.
++
+일부 공급업체는 스토리지 LUN 크기 제한을 ONTAP와 다르게 계산하여 최소 및 최대 스토리지 LUN 크기 제한을 결정합니다.
+
++
+_Hardware Universe_에는 지원되는 최대 및 최소 스토리지 LUN 크기 제한 값이 나열됩니다.
+
+* 스토리지 LUN은 크기 제한이 ONTAP 제한과 다른 다른 다른 호스트를 위한 것입니다.
++
+개방형 SAN에서 ONTAP는 해당 스토리지 LUN이 마스킹되지 않은 경우 다른 호스트용 스토리지 LUN에 노출됩니다.
+
++
+ONTAP는 노출된 모든 스토리지 LUN의 크기 문제에 대한 오류 메시지를 생성합니다.
+
+
+
+
+
+== 문제 해결 및 문제 해결
+
+. 출력을 검토하여 `storage errors show` 크기 문제가 있는 스토리지 LUN을 확인합니다.
++
+** 크기 문제가 있는 어레이 LUN이 ONTAP에 대한 것인 경우 스토리지 어레이 관리자는 ONTAP 요구 사항에 맞게 어레이 LUN의 크기를 조정한 다음 다시 ONTAP에 제공해야 합니다.
+** 크기 문제가 있는 스토리지 LUN이 다른 호스트에 대한 것인 경우 스토리지 시스템 관리자는 스토리지 LUN이 ONTAP에 노출되지 않도록 스토리지 LUN을 마스킹해야 합니다.
+
+
+. 문제가 해결된 후 를 `storage array config show` 다시 실행하여 오류가 지속되지 않는지 확인합니다.
+
+
+* 관련 정보 *
+
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]

@@ -1,0 +1,60 @@
+---
+permalink: install/reference_array_lun_is_marked_foreign_and_has_a_reservation_data_ontap_8_3_and_later.html 
+sidebar: sidebar 
+keywords: array, lun, marked, foreign, reservation, show, message, troubleshoot, resolution, problem 
+summary: 어레이 LUN에 호스팅된 데이터를 기본 형식으로 ONTAP로 가져올 수 있습니다. 가져오기 중에 스토리지 LUN에 외부 호스트 예약이 있는 경우 외부 로 표시된 스토리지 LUN의 컨텐츠를 가져오는 프로세스가 영향을 받을 수 있습니다. 
+---
+= 스토리지 LUN이 외부 LUN으로 표시되고 예약이 있습니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+어레이 LUN에 호스팅된 데이터를 기본 형식으로 ONTAP로 가져올 수 있습니다. 가져오기 중에 스토리지 LUN에 외부 호스트 예약이 있는 경우 * FORENAL * 으로 표시된 스토리지 LUN의 컨텐츠를 가져오는 프로세스가 영향을 받을 수 있습니다.
+
+
+
+== 저장 장치 오류가 메시지를 표시합니다
+
+[listing]
+----
+
+EMC-1.3 (600000e00d1000000010000e00030000): This array LUN is marked foreign and has a reservation.
+----
+
+
+== 설명
+
+이 오류 상태는 ONTAP 관리자가 가져오기 프로세스를 시작하기 전에 LUN의 외부 호스트 응용 프로그램에서 생성한 예약이 지워지지 않은 경우에 발생합니다. 가져오기 작업이 실패하고 메시지가 명령의 출력으로 표시됩니다 `storage errors show` .
+
+가져오기 작업을 수행하려면 예약을 지워야 합니다.
+
+
+
+== 문제 해결 및 문제 해결
+
+문제를 해결하려면 스토리지 시스템 관리자가 스토리지 LUN에서 영구 예약을 제거해야 합니다.
+
+네이티브 형식으로 스토리지 LUN 데이터에 액세스하는 외부 호스트에서 또는 ONTAP 명령을 사용하여 영구 예약을 제거할 수 있습니다. 다음 ONTAP 명령을 사용하여 예약을 제거할 수 있습니다.
+
+.  `storage errors show`다음 예와 같이 출력을 검토하여 예약과 함께 스토리지 LUN을 식별합니다.
++
+[listing]
+----
+
+system1a::> storage errors show
+EMC_SYMMETRIX_1
+--------------------------------------
+EMC-1.3 (600000e00d1000000010000e00030000): This array LUN is marked foreign and has a reservation.
+----
+.  `set -privilege advanced`admin_mode에서는 스토리지 LUN 내용을 가져올 수 없으므로 명령을 실행하여 _advanced_mode로 전환합니다.
+. 명령을 사용하여 `storage disk -remove-reservation` 식별된 스토리지 LUN에서 영구 예약을 제거합니다.
++
+[listing]
+----
+
+system1a::>* storage disk remove-reservation -disk EMC-1.3
+----
+. 명령을 사용하여 `lun import start` ONTAP로 스토리지 LUN 컨텐츠 가져오기 프로세스를 시작합니다.
+

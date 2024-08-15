@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_restriction_on_using_a_gatekeeper_lun.html 
+sidebar: sidebar 
+keywords: restriction, using, gatekeeper, luns 
+summary: '게이트키퍼 논리 디바이스(LUN)가 표시되는 경우 LUN을 ONTAP 시스템에 매핑하면 안 됩니다. ONTAP 시스템은 게이트키퍼 LUN을 사용할 수 없습니다. 게이트키퍼 LUN은 SYMAPI 또는 ControlCenter 에이전트가 스토리지와 통신하는 데 사용되는 Symmetrix 논리 디바이스입니다.' 
+---
+= 게이트키퍼 LUN 사용 제한
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+게이트키퍼 논리 디바이스(LUN)가 표시되는 경우 LUN을 ONTAP 시스템에 매핑하면 안 됩니다. ONTAP 시스템은 게이트키퍼 LUN을 사용할 수 없습니다. 게이트키퍼 LUN은 SYMAPI 또는 ControlCenter 에이전트가 스토리지와 통신하는 데 사용되는 Symmetrix 논리 디바이스입니다.

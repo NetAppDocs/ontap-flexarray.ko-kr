@@ -1,0 +1,130 @@
+---
+permalink: install/reference_array_luns_are_configured_with_conflicting_failover_modes_clustered_data_ontap_8_2_and_later.html 
+sidebar: sidebar 
+keywords: array, luns, configured, conflict, failover, modes 
+summary: ONTAP를 사용하려면 특정 ONTAP 시스템에 표시되는 어레이 LUN을 동일한 페일오버 모드로 구성해야 합니다. 일부 스토리지 어레이에서는 스토리지 LUN에 대한 서로 다른 경로에 일관성 없는 페일오버 모드를 구성할 수 있습니다. 
+---
+= 스토리지 LUN은 충돌하는 페일오버 모드로 구성됩니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP를 사용하려면 특정 ONTAP 시스템에 표시되는 어레이 LUN을 동일한 페일오버 모드로 구성해야 합니다. 일부 스토리지 어레이에서는 스토리지 LUN에 대한 서로 다른 경로에 일관성 없는 페일오버 모드를 구성할 수 있습니다.
+
+
+
+== 저장 장치 오류가 메시지를 표시합니다
+
+[listing]
+----
+NAME(UID): This array LUN is configured with conflicting failover modes. Each path to this LUN must use the same mode.
+----
+
+
+== 설명
+
+EMC CLARiX 스토리지 시스템과 같은 일부 스토리지 시스템에서는 FC Initiator 포트를 통해 페일오버 모드를 설정할 수 있습니다. 이러한 스토리지 시스템에서는 동일한 ONTAP 시스템의 FC 이니시에이터에 표시되는 어레이 LUN에 대해 정합성이 보장되지 않는 페일오버 모드를 설정할 수 있습니다. ONTAP는 특정 ONTAP 시스템의 어레이 LUN에 대한 경로에 대해 일관되지 않은 페일오버 모드를 지원하지 않습니다.
+
+스토리지 배열에서 FC Initiator를 통해 어레이 LUN에 대한 페일오버 모드를 설정할 수 있는 경우 설치 검증 프로세스의 일부로 ONTAP 시스템에 표시되는 어레이 LUN에 대한 페일오버 모드 설정에 문제가 없는지 확인해야 합니다.  `storage errors show`명령을 실행하면 스토리지 LUN에 대한 정합성이 보장되지 않는 페일오버 모드 설정에 대해 경고하고 EMS 메시지를 생성합니다.
+
+시스템이 일관되지 않은 어레이 LUN 페일오버 모드 설정으로 작동할 수 있지만 가능한 한 빨리 이 문제를 해결해야 합니다. 그렇지 않으면 경로 장애가 발생할 경우 ONTAP 시스템이 제대로 작동하지 않거나, 페일오버가 수행되지 않거나, 시스템 문제가 발생할 수 있습니다.
+
+[NOTE]
+====
+ONTAP는 ONTAP를 실행하는 노드 간에 서로 다른 페일오버 모드 설정을 지원합니다. 예를 들어 노드 A는 스토리지 LUN에 대한 경로에 액티브/패시브 모드를 사용할 수 있고 노드 B는 동일한 스토리지 LUN에 대한 경로에 ALUA를 사용할 수 있습니다.
+
+====
+
+
+== 문제 해결 및 문제 해결
+
+ONTAP이 LUN 초기화 중에 발견한 첫 번째 경로의 페일오버 모드는 ONTAP이 특정 ONTAP 시스템에서 LUN으로 연결되는 모든 경로를 기대하는 페일오버 모드입니다. 이후 검색된 경로의 페일오버 모드가 첫 번째 경로의 페일오버 모드와 일치하지 않으면 ONTAP에서 오류 메시지를 표시합니다.
+
+다음 `storage errors show` 예제에서 ONTAP는 mysystem1 FC Initiator 0a에서 볼 수 있는 LUN EMC-1.128의 페일오버 모드는 _private_이며, 페일오버 모드는 ONTAP이 해당 어레이 LUN의 첫 번째 경로에서 발견한 페일오버 모드와 다르다고 설명합니다.
+
+[listing]
+----
+
+mysystem1::> storage errors show
+EMC-1.128 (60060160e1b0220008071baf6046e211): hba 0a port 500601603ce014de mode Proprietary: This array LUN is configured with conflicting failover modes. Each path to this LUN must use the same mode.
+
+Disk: EMC-1.128
+UID: 60060160:E1B02200:1C65EB20:BFF7E111:00000000:00000000:00000000:...
+----
+스토리지 배열에서 페일오버 불일치 문제를 해결해야 합니다. 그러나 불일치를 해결하는 전체 절차는 ONTAP가 첫 번째 경로에서 감지한 페일오버 모드가 해당 ONTAP 시스템의 스토리지 LUN에 대한 모든 경로에 사용할 페일오버 모드인지 여부에 따라 달라집니다.
+
+. 설치 확인 프로세스의 일부로 아직 수행하지 않은 경우 를 `storage errors show` 입력합니다.
++
+[NOTE]
+====
+ `storage array config`해결해야 할 문제가 있을 경우 명령을 실행하라는 메시지가 `storage error show` 표시됩니다.
+
+====
+.  `storage errors show`출력을 검토하여 ONTAP가 기대하는 페일오버 모드와 일치하지 않는 스토리지 LUN에 대한 페일오버 모드 설정을 확인합니다.
++
+|===
+| 첫 번째 경로에서 시스템이 감지한 페일오버 모드가 다음과 같은 경우... | 예 | 필요한 작업 
+
+
+ a| 
+원하는 것
+ a| 
+ALUA의 페일오버 모드는 ONTAP이 첫 번째 경로에서 감지한 페일오버 모드입니다.
+ a| 
+스토리지 배열에서 ONTAP가 오류 메시지에서 식별한 이니시에이터의 페일오버 모드를 변경합니다. 3단계로 이동합니다.
+
+
+
+ a| 
+원하는 것이 아닙니다
+ a| 
+액티브/패시브의 페일오버 모드를 원하지만 ALUA는 ONTAP가 첫 번째 경로에서 감지한 페일오버 모드입니다.
+ a| 
+ONTAP 시스템 보기에서 스토리지 LUN을 제거합니다. 4단계로 이동합니다.
+
+|===
+. 이니시에이터의 페일오버 모드를 변경해야 하는 경우 다음과 같이 진행하여 불일치를 해결합니다.
++
+시스템이 첫 번째 경로에서 감지한 페일오버 모드가 원하는 페일오버 모드인 경우 이 단계를 사용합니다.
+
++
+.. ONTAP에서 두 번째 경로를 오프라인으로 전환합니다.
+.. 스토리지 배열에서 ONTAP가 오류 메시지에서 식별한 이니시에이터의 페일오버 모드를 변경합니다.
+.. ONTAP에서 두 번째 경로를 다시 온라인 상태로 전환합니다.
+
+
+. 불일치를 해결하기 위해 ONTAP 시스템 뷰에서 어레이 LUN을 제거해야 하는 경우 어레이 LUN이 스페어인지 애그리게이트인지에 따라 다음 방법 중 하나를 선택합니다.
++
+첫 번째 경로에서 시스템이 감지한 페일오버 모드가 원하는 페일오버 모드가 아닌 경우 다음 방법 중 하나를 사용합니다.
+
++
+|===
+| 방법 1: 영향을 받는 어레이 LUN은 스페어(애그리게이트의 일부가 아님) | 방법 2: 영향을 받는 LUN이 집계에 있습니다 
+
+
+ a| 
+이 방법을 사용하면 ONTAP 시스템을 재부팅할 필요가 없습니다.
+
+.. ONTAP에서 영향을 받는 각 스페어 LUN에 대해 다음 명령을 실행합니다. `disk remove_ownership LUNfullname`
+.. 스토리지 시스템에서 ONTAP 시스템에 대한 모든 경로에서 영향을 받는 각 스토리지 LUN을 마스킹합니다.
+.. 1분 정도 기다린 후 스토리지 LUN이 ONTAP 시스템에 더 이상 표시되지 않는지 확인합니다.
+.. ONTAP 시스템의 각 FC 이니시에이터에 대해 동일한 페일오버 모드를 설정합니다.
+.. 영향을 받는 모든 어레이 LUN을 ONTAP 시스템에 다시 제공합니다.
++
+다음에 ONTAP에서 LUN 검색을 실행할 때 LUN을 검색해야 합니다
+
+.. 를 `storage errors show` 실행하여 더 이상 페일오버 모드 오류가 없는지 확인합니다.
+
+ a| 
+이 방법으로 ONTAP 시스템을 재부팅해야 합니다.
+
+.. ONTAP 시스템을 재부팅하고 Loader 프롬프트에서 기다립니다.
+.. 스토리지 배열에서 이 시스템의 FC 이니시에이터에 대한 페일오버 모드 설정을 검토하고 필요에 따라 원하는 페일오버 모드로 업데이트합니다.
+.. ONTAP 시스템을 재부팅합니다.
+.. 를 `storage errors show` 실행하여 더 이상 페일오버 모드 오류가 없는지 확인합니다.
+
+
+|===
+

@@ -1,0 +1,14 @@
+---
+permalink: install/concept_determining_the_array_luns_for_specific_aggregates.html 
+sidebar: sidebar 
+keywords: determine, array, luns, specific, aggregates 
+summary: 어레이 LUN을 사용하는 ONTAP 시스템에 고유한 애그리게이트에서 여러 유형의 스토리지를 혼합하는 방법에 대한 다양한 규칙이 있습니다. 애그리게이트에 추가할 어레이 LUN 및 디스크를 계획할 때는 이러한 규칙을 이해해야 합니다. 
+---
+= 특정 애그리게이트의 스토리지 LUN 결정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+어레이 LUN을 사용하는 ONTAP 시스템에 고유한 애그리게이트에서 여러 유형의 스토리지를 혼합하는 방법에 대한 다양한 규칙이 있습니다. 애그리게이트에 추가할 어레이 LUN 및 디스크를 계획할 때는 이러한 규칙을 이해해야 합니다.

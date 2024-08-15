@@ -1,0 +1,58 @@
+---
+permalink: install/reference_reasons_for_no_luns_in_the_array_lun_group.html 
+sidebar: sidebar 
+keywords: reasons, luns, array, group, host, ontap, operation, empty 
+summary: 백엔드 구성을 검증할 때 스토리지 배열 config show 출력을 확인하여 LUN이 LUN 그룹에 표시되는지 확인해야 합니다. 스토리지 배열 config show 출력에 스토리지 LUN 그룹에 LUN이 표시되지 않으면 ONTAP는 패브릭의 타겟 포트를 볼 수 있지만 타겟 포트는 ONTAP에 어레이 LUN을 제공하지 않습니다. 
+---
+= 스토리지 LUN 그룹에 LUN이 없는 이유
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백엔드 구성을 검증할 때는 출력을 확인하여 LUN 그룹에 LUN이 표시되는지 확인해야 `storage array config show` 합니다. 출력에 스토리지 LUN 그룹에 LUN이 없는 경우 `storage array config show` ONTAP는 Fabric의 타겟 포트를 볼 수 있지만 타겟 포트는 ONTAP에 어레이 LUN을 제공하지 않습니다.
+
+타겟 포트가 ONTAP(_open 타겟 포트_)에 스토리지 LUN을 제공하지 않는 이유는 다양합니다. 오픈 타겟 포트의 이유는 스토리지 시스템마다 다를 수 있습니다. 또한 오픈 타겟 포트 문제를 처리하는 방법은 스토리지마다 다릅니다. 모든 스토리지 배열에서 오픈 타겟 포트의 원인 문제를 해결하려면 호스트 그룹 구성을 포함하여 스토리지 배열 구성을 확인해야 합니다.
+
+예를 들어, 원인은 _empty 호스트 그룹 _ 이(가) 될 수 있습니다. 이 그룹은 ONTAP에 오픈 타겟 포트로 표시됩니다. 빈 호스트 그룹을 사용하면 호스트 그룹이 FC 이니시에이터와 타겟 포트를 정의하지만 어레이 LUN이 나열되지 않습니다(즉, 호스트 그룹이 비어 있음).
+
+[NOTE]
+====
+ONTAP 시스템의 작업은 빈 호스트 그룹의 영향을 받지 않습니다.
+
+====
+다음 그림에서는 열린 포트 타겟 포트 상황과 빈 호스트 그룹 상황을 보여 줍니다. (그림에는 독립형 ONTAP 시스템이 사용되었습니다.)
+
+오픈 타겟 포트는 스토리지 컨트롤러 1A에 대한 호스트 그룹 정의에서 LUN ID가 누락되어 발생합니다. 스토리지 컨트롤러 1A에 대한 호스트 그룹 정의에서 FC 이니시에이터 0b는 타겟 포트로 조닝되고 FC 이니시에이터 포트 0b에 대해 정의된 호스트 그룹이 있지만 호스트 그룹에 LUN ID는 없습니다. 그림에서 볼 수 있듯이 스토리지 컨트롤러 2A에 대한 호스트 그룹 정의에는 이니시에이터와 LUN이 모두 포함됩니다.
+
+빈 호스트 그룹은 스토리지 컨트롤러 1B 및 2B에 대한 호스트 그룹 정의에 나열되지 않아 발생합니다. FC 이니시에이터 0a와 0d는 타겟 포트로 조닝되지만 LUN은 표시되지 않습니다.
+
+image::../media/ldevs_missing_from_host_group.gif[호스트 그룹에서 LDEV가 누락되었습니다]
+
+다음 예에서는 ONTAP 시스템이 스토리지 배열에 조닝되었지만 스토리지 컨트롤러 1A에 대한 호스트 그룹 정의에 LUN이 없어 오픈 타겟 포트가 생성되는 그림에 표시된 상황에 대한 출력을 보여 `storage array config show` 줍니다. 컨트롤러 1B 및 2B의 해당 호스트 그룹 정의에 LUN이 없으므로 빈 호스트 그룹이 됩니다.
+
+그림의 출력에서 FC 이니시에이터 0a, 0b 및 0d는 LUN 수 필드에 LUN이 표시되지 않습니다. FC Initiator 0c의 경우 LUN 그룹 1에 2개의 LUN이 표시됩니다.
+
+[listing]
+----
+cluster-1::> storage array config show
+          LUN   LUN
+Node      Group Count  Array Name       Array Target Port   Initiator
+--------- ----- -----  ------------     ------------------- ---------
+vs1
+           0     2     EMC_SYMMETRIX_1  50060480000001b0       0c
+
+           1     0     EMC_SYMMETRIX_1  50060480000001a0       0b
+
+           2     0     EMC_SYMMETRIX_1  50060480000001b1       0a
+
+                 0     EMC_SYMMETRIX_1  50060480000001a1       0d
+
+4 entries were displayed.
+----
+[NOTE]
+====
+출력에서 문제가 호스트 그룹에서 FC 이니시에이터가 없기 때문이 아닌지 확인할 수 있습니다. FC 이니시에이터가 호스트 그룹에서 누락된 경우 ONTAP은 LUN이 없는 LUN 그룹을 볼 수 없습니다.
+
+====

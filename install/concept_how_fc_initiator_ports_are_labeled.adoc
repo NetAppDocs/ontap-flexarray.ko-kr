@@ -1,0 +1,27 @@
+---
+permalink: install/concept_how_fc_initiator_ports_are_labeled.html 
+sidebar: sidebar 
+keywords: how, fc initiator, ports, labeled 
+summary: ONTAP 시스템의 모든 FC 이니시에이터 포트는 숫자 및 문자로 식별됩니다. 포트가 마더보드에 있는지 확장 슬롯에 있는지 여부에 따라 레이블이 다릅니다. 
+---
+= FC 이니시에이터 포트에 대한 레이블 지정 방법
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템의 모든 FC 이니시에이터 포트는 숫자 및 문자로 식별됩니다. 포트가 마더보드에 있는지 확장 슬롯에 있는지 여부에 따라 레이블이 다릅니다.
+
+* 마더보드의 포트 번호 지정
++
+포트 번호는 0a, 0b, 0c, 0d...
+
+* 확장 카드의 포트 번호 지정
++
+포트 번호는 확장 카드가 설치된 슬롯에 따라 지정됩니다. 슬롯 3의 카드 하나로 포트 3A 및 3B가 생성됩니다.
+
++
+FC 이니시에이터 포트에는 1 및 2라는 레이블이 지정됩니다. 그러나 소프트웨어는 이러한 레이블을 A와 B로 지칭합니다. 사용자 인터페이스에는 이러한 레이블이 표시되고 콘솔에는 시스템 메시지가 표시됩니다.
+
+

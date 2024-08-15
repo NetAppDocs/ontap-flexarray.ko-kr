@@ -1,0 +1,45 @@
+---
+permalink: install/task_assigning_ownership_of_array_luns.html 
+sidebar: sidebar 
+keywords: assign, ownership, array, luns 
+summary: 루트 볼륨이 디스크 쉘프에 있는 ONTAP 시스템에서는 어레이 LUN을 스토리지로 사용하기 위해 애그리게이트에 추가하기 전에 노드에 어레이 LUN 소유권을 할당해야 합니다. 
+---
+= 스토리지 LUN의 소유권을 할당합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+루트 볼륨이 디스크 쉘프에 있는 ONTAP 시스템에서는 어레이 LUN을 스토리지로 사용하기 위해 애그리게이트에 추가하기 전에 노드에 어레이 LUN 소유권을 할당해야 합니다.
+
+* 필요한 것 *
+
+* 백엔드 구성 테스트(ONTAP 시스템 뒤에 있는 장치의 연결 및 구성 테스트)를 완료해야 합니다.
+* 할당하려는 스토리지 LUN은 ONTAP 시스템에 제공되어야 합니다.
+
+
+다음과 같은 특성을 가진 스토리지 LUN의 소유권을 할당할 수 있습니다.
+
+* 소유하지 않은 것입니다.
+* 다음과 같은 스토리지 배열 구성 오류가 없습니다.
++
+** 스토리지 LUN이 ONTAP가 지원하는 크기보다 작거나 큽니다.
+** LDEV는 하나의 포트에만 매핑됩니다.
+** LDEV에 일관적이지 않은 LUN ID가 할당되어 있습니다.
+** LUN은 하나의 경로에서만 사용할 수 있습니다.
+
+
+
+
+ONTAP는 ONTAP 시스템과 함께 작동하는 스토리지 시스템을 방해할 수 있는 백엔드 구성 오류로 어레이 LUN의 소유권을 할당하려고 하면 오류 메시지를 표시합니다. 어레이 LUN 할당을 계속하려면 먼저 이러한 오류를 수정해야 합니다.
+
+ONTAP는 중복 오류가 있는 어레이 LUN을 할당하려고 할 때 사용자에게 경고를 표시합니다. 예를 들어 이 어레이 LUN에 대한 모든 경로는 동일한 컨트롤러에 연결되거나 어레이 LUN에 대한 하나의 경로에만 연결됩니다. LUN의 소유권을 할당하기 전이나 후에 중복 오류를 수정할 수 있습니다.
+
+.단계
+. 다음 명령을 입력하여 노드에 아직 할당되지 않은 어레이 LUN을 표시합니다.``storage disk show -container-type unassigned``
+. 다음 명령을 입력하여 이 노드에 스토리지 LUN을 할당합니다.``storage disk assign -disk arrayLUNname -owner nodename``
++
+디스크 할당 후 중복 오류를 해결하려면 매개 변수를 명령과 함께 사용해야 `-force` `storage disk assign` 합니다.
+
+

@@ -1,0 +1,20 @@
+---
+permalink: install/concept_planning_a_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: plan, configuration, array, luns 
+summary: 스토리지 LUN을 사용한 ONTAP 구성을 계획하려면 스토리지 어레이가 특정 ONTAP 릴리즈에서 지원되는지 확인해야 합니다. 또한 모든 시스템이 스토리지 LUN을 사용한 구성 요구 사항을 충족하는지 확인하기 위해 상호 운용성 및 지원 정보를 확인해야 합니다. 
+---
+= 스토리지 LUN을 사용한 구성 계획
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 LUN을 사용한 ONTAP 구성을 계획하려면 스토리지 어레이가 특정 ONTAP 릴리즈에서 지원되는지 확인해야 합니다. 또한 모든 시스템이 스토리지 LUN을 사용한 구성 요구 사항을 충족하는지 확인하기 위해 상호 운용성 및 지원 정보를 확인해야 합니다.
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/site/global/dashboard["NetApp 지원"]
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

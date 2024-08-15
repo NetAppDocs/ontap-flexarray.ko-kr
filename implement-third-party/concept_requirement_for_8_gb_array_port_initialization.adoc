@@ -1,0 +1,20 @@
+---
+permalink: implement-third-party/concept_requirement_for_8_gb_array_port_initialization.html 
+sidebar: sidebar 
+keywords: requirement, 8-Gb array, port, initialization 
+summary: '일반적인 FC(Fibre Channel) 패브릭에서 스토리지 시스템 포트는 N-포트(노드 포트)로 초기화되고 해당 스위치 포트는 F-포트(패브릭 포트)로 초기화됩니다. 경우에 따라 이러한 F-포트가 오프라인 상태가 되고 L-포트(루프 포트)로 작동을 재개하여 패브릭 오류가 발생할 수 있습니다.' 
+---
+= 8Gb 스토리지 포트 초기화 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+일반적인 FC(Fibre Channel) 패브릭에서 스토리지 시스템 포트는 N-포트(노드 포트)로 초기화되고 해당 스위치 포트는 F-포트(패브릭 포트)로 초기화됩니다. 경우에 따라 이러한 F-포트가 오프라인 상태가 되고 L-포트(루프 포트)로 작동을 재개하여 패브릭 오류가 발생할 수 있습니다.
+
+이 동작은 Brocade 스위치의 토폴로지 자동 협상 문제 때문에 발생합니다.
+
+스위치 포트가 항상 F-port로 초기화되도록 하려면 스토리지 어레이에 연결된 Brocade 스위치 포트에서 명령을 실행해야 `portcfggport` ``<portnumber> 1` 합니다. 이 문제를 방지하기 위해 시스템 구성을 시작할 때 이 명령을 실행해야 하며, 문제가 발생하면 해결해야 합니다.
+
+패브릭 전체에서 효율성을 높이기 위해 ONTAP 이니시에이터 포트에 연결된 모든 Brocade 포트에서도 이 해결 방법을 사용할 수 있습니다.

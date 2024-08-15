@@ -1,0 +1,24 @@
+---
+permalink: install/concept_spare_core_array_lun_requirement_for_core_dumps.html 
+sidebar: sidebar 
+keywords: spare, array, lun, requirement, core, dumps 
+summary: 독립 실행형 ONTAP 시스템과 HA 쌍의 노드 모두에 대해 사용 가능한 스페어 디스크가 없는 경우, 코어 덤프를 수용하기 위해 적절한 크기의 스페어 어레이 LUN을 생성해야 합니다. 
+---
+= 코어 덤프를 위한 스페어 스토리지 LUN 요구 사항입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+독립 실행형 ONTAP 시스템과 HA 쌍의 노드 모두에 대해 사용 가능한 스페어 디스크가 없는 경우, 코어 덤프를 수용하기 위해 적절한 크기의 스페어 어레이 LUN을 생성해야 합니다.
+
+디스크와 어레이 LUN을 모두 사용하는 시스템에서는 스페어 디스크를 사용할 수 있는 경우 코어 덤프에 스페어 어레이 LUN이 필요하지 않습니다. 스페어 어레이 LUN과 스페어 디스크를 모두 사용할 수 없는 경우에는 코어를 덤프할 공간이 없습니다.
+
+코어 덤프에는 메모리 및 NVRAM의 콘텐츠가 포함됩니다. 시스템 패닉 중에 ONTAP는 스페어가 있는 경우 코어를 스페어 스토리지 LUN 또는 스페어 디스크로 덤프합니다. 재부팅 시 스페어에서 코어를 읽고 루트 파일 시스템의 코어 덤프에 저장합니다. 그런 다음 기술 지원 부서에서 코어 덤프를 사용하여 문제를 해결할 수 있습니다.
+
+Hardware Universe_에는 각 플랫폼에 대한 최소 스페어 코어 스토리지 LUN 크기가 포함되어 있습니다.
+
+* 관련 정보 *
+
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]

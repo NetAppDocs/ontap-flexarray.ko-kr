@@ -1,0 +1,22 @@
+---
+permalink: implement-third-party/concept_alua_behavior_of_vnx2_storage_arrays.html 
+sidebar: sidebar 
+keywords: alua, behavior, vnx2, storage, arrays 
+summary: '모든 EMC CLARiX 및 VNX 스토리지에서 ALUA(Asymmetric Active-Active) 페일오버 모드를 사용하지만 VNX2 스토리지 시스템은 ALUA 동작에서 다를 수 있습니다.' 
+---
+= VNX2 스토리지 시스템의 ALUA 동작
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+모든 EMC CLARiX 및 VNX 스토리지에서 ALUA(Asymmetric Active-Active) 페일오버 모드를 사용하지만 VNX2 스토리지 시스템은 ALUA 동작에서 다를 수 있습니다.
+
+다른 모든 EMC 스토리지 LUN과 마찬가지로 동적 디스크 풀에서 ONTAP 시스템에 제공되는 VNX2 스토리지 LUN은 ALUA 페일오버 모드를 사용합니다. 그러나 기존 RAID 그룹에서 ONTAP 시스템에 제공되는 VNX2 스토리지 LUN은 Active-Active 페일오버 모드를 사용하며 모든 경로가 * (Active Optimized)로 보고됩니다. *`AO` 스토리지 LUN의 이러한 동작은 백엔드 스토리지에서 스냅샷 생성과 같은 특정 작업 중에 변경됩니다.
+
+따라서 VNX2 스토리지 LUN의 일관된 동작을 유지하기 위해 ONTAP은 이러한 스토리지 LUN이 기존 RAID 그룹에서 제공되는지 아니면 동적 디스크 풀에서 제공되는지에 관계없이 이러한 LUN을 ALUA로 처리합니다.
+
+이러한 경우 지정된 VNX2 LUN에 대한 입출력 요청은 * (사용 중) 상태로 보고된 경로에서만 배포되며 *`INU`* (Active-Optimized)로 보고된 모든 경로를 통하지 않습니다 *`AO`.
+
+예를 들어 기존 RAID 그룹에서 ONTAP 시스템으로 제공되는 VNX2 스토리지 LUN에 대한 경로 4개가 있는 경우 모든 경로가 * 로 보고됩니다. *`AO`그러나 두 개의 경로만 * 상태에 있는 *`INU`반면 다른 두 경로는 사용되지 않고 *`RDY`* (준비) 상태입니다.

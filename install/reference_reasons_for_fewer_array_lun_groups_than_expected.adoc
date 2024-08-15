@@ -1,0 +1,54 @@
+---
+permalink: install/reference_reasons_for_fewer_array_lun_groups_than_expected.html 
+sidebar: sidebar 
+keywords: reasons, fewer, array, lun, groups, expected, resolve, issue 
+summary: 백엔드 구성을 검증할 때 스토리지 배열 config show 출력을 확인하여 출력에 있는 스토리지 LUN 그룹 수가 의도한 개인지 확인해야 합니다. 
+---
+= 스토리지 LUN 그룹 수가 예상보다 적은 이유
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백엔드 구성을 검증할 때 출력을 확인하여 출력에 있는 스토리지 LUN 그룹 수가 의도한 대로 표시되는지 확인해야 `storage array config show` 합니다.
+
+
+
+== 설명
+
+LUN 그룹 수가 예상보다 적은 가장 큰 원인은 ONTAP 시스템의 두 FC 이니시에이터 포트 쌍에 대해 LDEV-LUN 매핑이 동일하기 때문입니다. LDEV-LUN 매핑이 두 FC 이니시에이터 포트 쌍에 대해 동일하면 `storage array config show` 출력에 예상보다 1개 적은 LUN 그룹이 표시됩니다.
+
+두 FC 이니시에이터 포트 쌍이 같은 타겟 포트 쌍에 매핑되기 때문에 다음 `storage array config show` 출력에는 하나의 어레이 LUN 그룹만 표시됩니다.
+
+[listing]
+----
+
+mysystem1::> storage array config show
+
+         LUN   LUN
+Node     Group Count Array Name  Array Target Ports      Switch Port    Initiator
+------   ----- ----- ---------- -------------------      -----------    ---------
+
+mysystem1  0     2   DGC_RAID5_1  20:1A:00:a0:b8:0f:ee:04  vnbr200es25:5   0a
+                                  20:2A:00:a0:b8:0f:ee:04  vnci9124s53:6   0c
+                                  20:1A:00:a0:b8:0f:ee:04  vnbr200es25:5   0b
+                                  20:2A:00:a0:b8:0f:ee:04  vnci9124s53:6   0d
+----
+Array Target Ports 열을 보면 LUN 그룹 내에서 동일한 타겟 포트를 두 번 이상 볼 수 있으며, 각 발생 항목마다 다른 이니시에이터를 가질 수 있습니다.
+
+* 이니시에이터 0a와 0b 모두 스토리지 어레이 포트 1A에 액세스할 수 있습니다.
+* 이니시에이터 0c와 0d는 모두 스토리지 포트 2A에 액세스할 수 있습니다.
+
+
+
+
+== 문제 해결
+
+두 FC 이니시에이터 포트 쌍에 대해 LDEV-LUN 매핑이 동일한 경우 ONTAP 시스템이 작동할 수 있기 때문에 ONTAP에서는 이 플래그를 오류로 지정하지 않습니다. 그러나 같은 타겟 포트에 대한 여러 FC 이니시에이터는 지원되지 않습니다. ONTAP 시스템이 지원되는 구성을 따라 원하는 LUN 그룹 수를 가질 수 있도록 매핑을 수정해야 합니다.
+
+이 문제를 해결하려면 다음을 수행합니다.
+
+. 스토리지 어레이에서 FC 이니시에이터 포트 쌍 매핑이 ONTAP 시스템의 두 FC 이니시에이터 포트 쌍에 대해 더 이상 동일하지 않도록 매핑을 수정합니다.
+. ONTAP 시스템에서 를 `storage array config show` 다시 실행하고 예상되는 LUN 그룹 수가 표시되고 FC 이니시에이터 포트 쌍이 같은 타겟 포트에 액세스하지 않는지 확인합니다.
+

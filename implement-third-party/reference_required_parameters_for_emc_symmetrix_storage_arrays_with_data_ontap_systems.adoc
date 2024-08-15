@@ -1,0 +1,71 @@
+---
+permalink: implement-third-party/reference_required_parameters_for_emc_symmetrix_storage_arrays_with_data_ontap_systems.html 
+sidebar: sidebar 
+keywords: required, parameter, settings, storage, array, ontap, systems, host, channel, director, configuration, port 
+summary: 스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다. 
+---
+= ONTAP 시스템용 스토리지 배열의 필수 매개 변수 설정입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 배열이 ONTAP 시스템에서 성공적으로 작동하려면 스토리지 배열에서 특정 매개 변수 설정이 필요합니다.
+
+
+
+== 필요한 호스트 채널 디렉터 포트 구성 매개 변수입니다
+
+다음 표에는 스토리지에 설정해야 하는 호스트 채널 디렉터 포트 구성 매개 변수가 나와 있습니다.
+
+|===
+| 매개 변수(이름은 GUI와 CLI 간에 다를 수 있음) | 설정 
+
+
+ a| 
+`Common SN` (공통 일련 번호 또는 C 비트 매개변수)
+ a| 
+활성화
+
+
+
+ a| 
+`PP` (Point-to-Point 매개 변수)
+ a| 
+활성화
+
+
+
+ a| 
+`SC3` (SCSI-3)
+ a| 
+활성화
+
+
+
+ a| 
+`SPC-2` (SCS2_Protocol_version, SCSI 주 명령 2 매개변수 또는 `Allow inquiry data to be compiled to the standard)`
+ a| 
+활성화
+
+
+
+ a| 
+`UWN` (고유한 전 세계 이름)
+ a| 
+활성화
+
+
+
+ a| 
+`Volume Set Addressing`
+ a| 
+사용 안 함
+
+|===
+ `Volume Set Addressing`매개 변수는 LUN이 매핑되는 모든 채널 디렉터 포트에 대해 동일한 방법으로 설정해야 합니다. 설정이 다른 경우 ONTAP는 이를 출력과 EMS 메시지에 LUN ID 불일치로 `storage errors show` 보고합니다.
+
+* 관련 정보 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray 가상화 설치 요구 사항 및 참조 자료"]

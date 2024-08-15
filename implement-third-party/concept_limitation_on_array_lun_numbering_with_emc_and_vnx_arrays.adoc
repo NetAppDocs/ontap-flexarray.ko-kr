@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_limitation_on_array_lun_numbering_with_emc_and_vnx_arrays.html 
+sidebar: sidebar 
+keywords: limitation, array, lun, numbering, emc, vnx, array 
+summary: EMC VNX 스토리지 시스템은 0에서 255 사이의 스토리지 LUN 번호만 지원합니다. 이 범위를 넘어서 번호가 매겨진 스토리지 LUN은 ONTAP에 표시되지 않습니다. 
+---
+= EMC VNX 스토리지의 스토리지 LUN 번호 지정에 대한 제한 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EMC VNX 스토리지 시스템은 0에서 255 사이의 스토리지 LUN 번호만 지원합니다. 이 범위를 넘어서 번호가 매겨진 스토리지 LUN은 ONTAP에 표시되지 않습니다.

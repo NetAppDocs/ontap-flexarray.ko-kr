@@ -1,0 +1,24 @@
+---
+permalink: implement-e-series/concept_two_4_port_array_lun_group_configuration.html 
+sidebar: sidebar 
+keywords: two, 4-port, array, lun, group, configuration 
+summary: 이 구성에서 각 ONTAP FC 이니시에이터 포트 쌍은 별도의 어레이 LUN 그룹에 액세스합니다. 조닝은 단일 어레이 대상 포트에 대한 단일 ONTAP FC 이니시에이터입니다. 
+---
+= 2개의 4포트 스토리지 LUN 그룹 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 구성에서 각 ONTAP FC 이니시에이터 포트 쌍은 별도의 어레이 LUN 그룹에 액세스합니다. 조닝은 단일 어레이 대상 포트에 대한 단일 ONTAP FC 이니시에이터입니다.
+
+이 구성은 시스템에서 실행되는 ONTAP 릴리스에 대해 지원되는 상호 운용성 매트릭스에 나열된 모든 스토리지 어레이에서 사용할 수 있도록 지원됩니다.
+
+다음 그림에서는 이 구성의 블록 다이어그램을 보여 줍니다.
+
+image::../media/two_4_port_array_lun_groups.gif[4포트 스토리지 LUN 그룹 2개]
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

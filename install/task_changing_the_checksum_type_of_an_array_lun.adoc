@@ -1,0 +1,48 @@
+---
+permalink: install/task_changing_the_checksum_type_of_an_array_lun.html 
+sidebar: sidebar 
+keywords: change, checksum, type, array, lun 
+summary: LUN의 체크섬 유형과 체크섬 유형이 다른 애그리게이트에 추가하려면 어레이 LUN의 체크섬 유형을 변경해야 합니다. 
+---
+= 스토리지 LUN의 체크섬 유형 변경
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+LUN의 체크섬 유형과 체크섬 유형이 다른 애그리게이트에 추가하려면 어레이 LUN의 체크섬 유형을 변경해야 합니다.
+
+* 필요한 것 *
+
+특정 유형의 워크로드에서 성능과 각 체크섬 유형의 스토리지 용량 활용률 간의 상충 관계를 검토해야 합니다.
+
+체크섬 사용에 대한 자세한 내용은 영업 엔지니어에게 문의할 수도 있습니다.
+
+* AZCS(Advanced Zoned Checksum) 애그리게이트에 추가할 어레이 LUN에 * 조닝된 체크섬 유형을 할당해야 합니다. 조닝된 체크섬 어레이 LUN이 AZCS 애그리게이트에 추가되면 이 LUN은 고급 조닝된 체크섬 어레이 LUN이 됩니다. 마찬가지로 조닝된 체크섬 어레이 LUN이 조닝된 체크섬 유형에 추가되면 이는 조닝된 체크섬 유형입니다.
+* 소유권을 할당하는 동안에는 스토리지 LUN의 체크섬을 수정할 수 없습니다. 이미 할당된 어레이 LUN에서만 체크섬을 수정할 수 있습니다.
+
+
+.단계
+. 다음 명령을 입력하여 체크섬 유형을 변경합니다. `storage disk assign -disk disk name -owner owner -c new_checksum_type`
++
+_disk name_은 체크섬 유형을 변경하려는 스토리지 LUN입니다.
+
++
+_owner_는 스토리지 LUN이 할당되는 노드입니다.
+
++
+_new_checksum_type_은(는) 블록 또는 조닝될 수 있습니다.
+
++
+`storage disk assign -disk EMC-1.1 -owner system147b -c block`
+
++
+스토리지 LUN의 체크섬 유형이 지정한 새 체크섬 유형으로 변경됩니다.
+
+. 다음 명령을 입력하여 노드 쉘에 액세스합니다. `system node run -node node_name`
++
+_node_name_은(는) 이 시스템의 이름입니다.
+
+. 다음 명령을 입력하여 노드 쉘을 종료합니다. `exit`
+

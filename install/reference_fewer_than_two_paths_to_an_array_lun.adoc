@@ -1,0 +1,112 @@
+---
+permalink: install/reference_fewer_than_two_paths_to_an_array_lun.html 
+sidebar: sidebar 
+keywords: fewer, two, paths, array, lun 
+summary: 어레이 LUN에 대한 경로가 2개 미만인 일반적인 이유는 매핑 오류, 조닝 오류 또는 케이블 누락입니다. 스토리지 오류 표시 출력은 단일 경로로만 스토리지 LUN을 식별합니다. 
+---
+= 어레이 LUN에 대한 경로가 2개 미만입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+어레이 LUN에 대한 경로가 2개 미만인 일반적인 이유는 매핑 오류, 조닝 오류 또는 케이블 누락입니다.  `storage errors show`출력에서는 경로가 하나만 있는 어레이 LUN을 식별합니다.
+
+ONTAP에는 스토리지 LUN에 대한 중복 경로가 필요하므로 디바이스에 장애가 발생하더라도 LUN에 대한 액세스가 유지됩니다. 각 스토리지 LUN에 대해 두 개의 경로가 있어야 합니다.
+
+
+
+== 저장 장치 오류가 메시지를 표시합니다
+
+[listing]
+----
+
+NAME (UID):  This Array LUN is only available on one path.  Proper configuration requires two paths.
+----
+
+
+== 설명
+
+어레이 LUN에 대한 경로가 2개 미만인 이유는 다음과 같습니다.
+
+* LDEV는 하나의 스토리지 포트에만 매핑됩니다.
+* 스토리지 LUN의 두 번째 경로는 조닝되지 않습니다.
+* 호스트 그룹 매핑에 문제가 있습니다.
+* 스위치 연결에 문제가 있습니다.
+* 케이블이 빠졌습니다.
+* 어댑터에서 SFP에 장애가 발생했습니다.
+
+
+[NOTE]
+====
+실행 중인 시스템에서 경로가 빠지면 EMS 메시지가 발생한다.
+
+====
+
+
+== 문제 시나리오
+
+이 매핑 오류 예에서는 스토리지 관리자가 새 LDEV Z를 생성했다고 가정합니다. 관리자는 LDEV Z를 LUN ID 3으로 타겟 포트 1A에 매핑했습니다. 그러나 다음 그림과 같이 관리자는 LDEV를 대상 포트 2A에 매핑하지 않았습니다. 결과는 스토리지 LUN에 대한 경로가 하나만 됩니다.
+
+image::../media/ldev_mapped_on_only_one_array_port.gif[이 그래픽은 주변 텍스트에 설명되어 있습니다.]
+
+이 오류가 발생하면 `storage array config show` 다음 예에서와 같이 LUN에 대한 경로가 하나만 표시됩니다.
+
+[listing]
+----
+
+mysystem1::> storage array config show
+           LUN     LUN
+Node       Group   Count  Array Name    Array Target Ports      Switch Port   Initiator
+-------   -------  -----  ----------   -------------------      -----------    ---------
+mysystem1a    0      1    DGC_RAID5_1  20:1A:00:a0:b8:0f:ee:04  vnbr20es25:5   0a
+
+Warning: Configuration errors were detected.  Use 'storage errors show' for detailed information.
+----
+ `storage errors show`명령을 실행하면 경로가 3개 미만인 LUN을 확인하는 데 필요한 세부 정보가 제공됩니다.
+
+[listing]
+----
+
+mysystem1a::> storage errors show
+Disk: EMC-1.2
+UID: 600508B4:000B6314:00008000:00200000:00000000:00000000:00000000:...
+--------------------
+EMC-1.2 (600508b4000b63140000800000200000): This array LUN is only available on one path. Proper configuration requires two paths.
+----
+[NOTE]
+====
+이 예의 UID는 600508B4:000B6314:00008000:00200000:00000000:000000000:00000000:00000000:0000000000:00000000입니다. 공백으로 인해 잘립니다.
+
+====
+
+
+== 문제 해결 및 문제 해결
+
+출력과 스토리지 오류를 모두 `storage array config show` 보면 어레이 LUN에 대한 경로가 2개 미만인 경우 출력이 유용합니다.
+
+.  `storage errors show`출력을 검토하여 하나의 경로에서만 사용할 수 있는 스토리지 LUN의 일련 번호를 확인합니다.
+.  `storage array config show`출력을 검토하여 문제의 원인을 가려냅니다.
++
+|===
+| 출력에 표시되는 경우 `storage array config show` ... | 원인은 가장 가능성이 높습니다... 
+
+
+ a| 
+다른 어레이 LUN
+ a| 
+매핑 오류입니다
+
+
+
+ a| 
+다른 어레이 LUN이 없습니다
+ a| 
+케이블 연결 오류, 조닝 오류 또는 하드웨어 문제입니다
+
+|===
+. 매핑 오류가 원인인 경우 스토리지 시스템 관리자에게 식별된 스토리지 LUN을 두 개의 중복 스토리지 어레이 포트에 매핑하도록 요청합니다.
+. 원인이 매핑 이외의 문제인 것 같으면 조닝, 호스트 그룹 매핑, 케이블 연결 및 접속을 확인하십시오.
+. 문제를 해결한 후 를 다시 실행하여 `storage array config show` 오류가 해결되었는지 확인합니다.
+

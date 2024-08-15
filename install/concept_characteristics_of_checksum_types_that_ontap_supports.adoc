@@ -1,0 +1,40 @@
+---
+permalink: install/concept_characteristics_of_checksum_types_that_ontap_supports.html 
+sidebar: sidebar 
+keywords: characteristics, checksum, types, ontap, supports, block, advanced, zoned 
+summary: 'ONTAP는 어레이 LUN, 디스크 및 애그리게이트에 대해 블록 체크섬 유형(BCS)과 고급 조닝된 체크섬 유형(AZCS)을 지원합니다.' 
+---
+= ONTAP가 지원하는 체크섬 유형의 특성입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP는 어레이 LUN, 디스크 및 애그리게이트에 대해 블록 체크섬 유형(BCS)과 고급 조닝된 체크섬 유형(AZCS)을 지원합니다.
+
+ONTAP에서 스토리지 LUN에 할당된 체크섬 유형은 스토리지 LUN의 성능이나 사용 가능한 공간에 영향을 미칠 수 있습니다. 따라서 스토리지 LUN에 할당하는 체크섬 유형에 따라 필요한 스토리지 LUN의 수와 크기가 영향을 받을 수 있습니다.
+
+
+
+== 블록 체크섬(BCS)
+
+BCS는 스토리지 LUN에 대해 권장되는 기본 체크섬 유형입니다. BCS는 AZCS보다 스토리지 LUN의 성능을 향상시킵니다.
+
+BCS는 AZCS보다 스토리지 LUN의 사용 가능한 공간에 더 큰 영향을 미칩니다. BCS는 스토리지 LUN에서 사용 가능한 공간의 12.5%를 사용합니다.
+
+
+
+== 고급 조닝된 체크섬(AZCS)
+
+AZCS는 BCS의 대안입니다. 스토리지 LUN의 가용 공간에 대한 AZCS의 영향은 BCS보다 적습니다. AZCS는 디바이스 용량의 1.56%를 사용합니다. 그러나 더 많은 가용 공간에 대한 필요성을 성능 대비 고려해야 합니다. AZCS는 경우에 따라 어레이 LUN에 성능 문제를 일으킬 수 있습니다.
+
+고성능 랜덤 워크로드의 경우 어레이 LUN에는 AZCS가 권장되지 않습니다. 하지만 DR, 아카이브 또는 유사한 워크로드에 어레이 LUN과 함께 AZCS를 사용할 수는 있습니다.
+
+기본 디스크에 AZCS 성능에 영향을 주지 않습니다.
+
+체크섬 유형에 대한 지침은 디스크 크기 및 유형에 따라 다릅니다. 자세한 내용은 _TR3838 스토리지 서브시스템 구성 가이드_ 를 참조하십시오.
+
+* 관련 정보 *
+
+https://www.netapp.com/pdf.html?item=/media/19675-tr-3838.pdf["NetApp 기술 보고서 3838: 스토리지 서브시스템 구성 가이드"^]

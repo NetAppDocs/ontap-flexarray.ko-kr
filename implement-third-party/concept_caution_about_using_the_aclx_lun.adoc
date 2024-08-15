@@ -1,0 +1,18 @@
+---
+permalink: implement-third-party/concept_caution_about_using_the_aclx_lun.html 
+sidebar: sidebar 
+keywords: caution, aclx, lun 
+summary: 'VMAX 스토리지에서 ACLX(Access Control Logix) LUN은 고객이 ACLX 사용을 요청하는 경우 초기화 중에 생성됩니다. ACLX LUN은 스토리지 LUN이 아니므로 ONTAP에 매핑해서는 안 됩니다.' 
+---
+= ACLX LUN 사용 시 주의
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VMAX 스토리지에서 ACLX(Access Control Logix) LUN은 고객이 ACLX 사용을 요청하는 경우 초기화 중에 생성됩니다. ACLX LUN은 스토리지 LUN이 아니므로 ONTAP에 매핑해서는 안 됩니다.
+
+ACLX LUN이 ONTAP 시스템에 매핑되는 경우 ONTAP는 ACLX LUN이 필요한 최소 크기보다 작다는 메시지를 기록하고 LUN을 실패로 표시합니다. ONTAP 시스템은 이 오류 메시지를 기록한 후 계속 정상적으로 작동하지만 LUN을 사용할 수 없습니다.
+
+ACLX LUN은 ONTAP 시스템의 프런트엔드 디렉터 포트에서 매핑 해제되어야 합니다.

@@ -1,0 +1,30 @@
+---
+permalink: install/concept_considerations_when_planning_for_disk_ownership.html 
+sidebar: sidebar 
+keywords: considerations, plan, disk, ownership 
+summary: 어레이 LUN과 함께 사용하기 위해 여러 ONTAP 시스템을 구축하는 경우 어떤 시스템이 어떤 어레이 LUN을 소유하는지 확인해야 합니다. 디스크 소유권은 특정 스토리지 LUN을 소유한 ONTAP 시스템만 스토리지 LUN에서 데이터를 읽고 스토리지 LUN에 데이터를 쓸 수 있도록 합니다. 
+---
+= 디스크 소유권을 계획할 때 고려해야 할 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 LUN과 함께 사용할 수 있도록 여러 ONTAP 시스템을 구축하는 경우 어떤 SYSTEM_OWATES_WHITE 스토리지 LUN을 결정해야 합니다. 디스크 소유권은 특정 스토리지 LUN을 소유한 ONTAP 시스템만 스토리지 LUN에서 데이터를 읽고 스토리지 LUN에 데이터를 쓸 수 있도록 합니다.
+
+스토리지 LUN을 소유할 시스템을 계획할 때 다음 사항을 고려해야 합니다.
+
+* 플랫폼에서 지원하는 최대 할당 장치 제한입니다
++
+Hardware Universe_는 여러 플랫폼에서 지원되는 최대 할당 디바이스 제한을 표시합니다. 이는 하드 코딩된 한계입니다. 시스템에서 어레이 LUN과 디스크를 모두 사용하는 경우 이 최대 한도는 디스크 및 어레이 LUN을 합한 최대값입니다. 시스템에 할당할 수 있는 어레이 LUN 및 디스크 수를 결정할 때 두 스토리지 유형을 모두 고려해야 합니다.
+
+* 사용자 환경에서 사용되는 다양한 애플리케이션에서 생성될 것으로 예상되는 로드 양입니다
++
+어떤 유형의 애플리케이션은 많은 요청을 생성하는 반면, 다른 애플리케이션(예: 아카이빙 애플리케이션)에서는 더 적은 요청을 생성합니다. 특정 응용 프로그램의 예상 하중을 기준으로 소유권 할당을 평가하는 것을 고려할 수 있습니다.
+
+
+
+* 관련 정보 *
+
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]

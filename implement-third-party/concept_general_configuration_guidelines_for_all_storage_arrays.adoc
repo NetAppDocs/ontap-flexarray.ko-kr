@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_general_configuration_guidelines_for_all_storage_arrays.html 
+sidebar: sidebar 
+keywords: configuration, guidelines, storage, arrays 
+summary: ONTAP에서 지원하는 모든 스토리지 시스템에 대해 따라야 하는 특정 구성 지침이 있습니다. 
+---
+= 모든 스토리지 시스템에 대한 일반 구성 지침
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP에서 지원하는 모든 스토리지 시스템에 대해 따라야 하는 특정 구성 지침이 있습니다.

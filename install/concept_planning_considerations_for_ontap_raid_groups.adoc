@@ -1,0 +1,32 @@
+---
+permalink: install/concept_planning_considerations_for_ontap_raid_groups.html 
+sidebar: sidebar 
+keywords: plan, considerations, ontap, raid, groups 
+summary: 어레이 LUN에 대해 ONTAP RAID 그룹을 설정하기 전에 애그리게이트의 크기, RAID 그룹의 수와 크기, 어레이 LUN의 크기를 계획해야 합니다. 데이터 요구 사항을 가장 잘 충족하는 RAID 그룹은 스토리지에서 데이터 및 가용성을 적절하게 보호합니다. 
+---
+= ONTAP RAID 그룹에 대한 계획 고려 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+어레이 LUN에 대해 ONTAP RAID 그룹을 설정하기 전에 애그리게이트의 크기, RAID 그룹의 수와 크기, 어레이 LUN의 크기를 계획해야 합니다. 데이터 요구 사항을 가장 잘 충족하는 RAID 그룹은 스토리지에서 데이터 및 가용성을 적절하게 보호합니다.
+
+ONTAP RAID 그룹을 계획하려면 다음 작업이 필요합니다.
+
+. 데이터 요구사항을 가장 잘 충족하는 애그리게이트의 크기 계획
+. 애그리게이트 크기에 필요한 RAID 그룹의 수 및 크기 계획
+. ONTAP RAID 그룹에 필요한 스토리지 LUN의 크기 계획:
++
+** 성능 저하를 방지하려면 특정 ONTAP RAID 그룹에 있는 모든 어레이 LUN의 크기가 같아야 합니다.
+** 어레이 LUN은 동일한 애그리게이트의 모든 RAID 그룹에서 크기가 같아야 합니다.
+
+
+. 스토리지 어레이 관리자와 통신하여 애그리게이트에 필요한 크기의 어레이 LUN 수를 생성합니다.
++
+스토리지 LUN은 스토리지 시스템 공급업체 설명서의 지침에 따라 성능에 맞게 최적화되어야 합니다.
+
+
+
+스토리지 배열에 사용할 ONTAP RAID 그룹을 설정하는 방법에 대한 자세한 내용은 을 참조하십시오 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["_디스크 및 집계 관리 _"].

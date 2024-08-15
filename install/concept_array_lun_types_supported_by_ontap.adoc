@@ -1,0 +1,20 @@
+---
+permalink: install/concept_array_lun_types_supported_by_ontap.html 
+sidebar: sidebar 
+keywords: array, lun, type, supported, ontap 
+summary: 스토리지 어레이 LUN만 ONTAP에 매핑할 수 있습니다. 스토리지 유형 LUN인 경우 LUN 0을 ONTAP에 매핑할 수 있습니다. 
+---
+= ONTAP에서 지원하는 어레이 LUN 유형입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 어레이 LUN만 ONTAP에 매핑할 수 있습니다. 스토리지 유형 LUN인 경우 LUN 0을 ONTAP에 매핑할 수 있습니다.
+
+일부 스토리지 배열은 nonstorage_command_LUN을 사용합니다. 명령 유형 LUN은 ONTAP 시스템에 매핑할 수 없습니다.
+
+* 관련 정보 *
+
+https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["타사 스토리지를 위한 FlexArray 가상화 구축"]

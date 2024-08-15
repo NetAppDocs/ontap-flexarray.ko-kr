@@ -1,0 +1,20 @@
+---
+permalink: install/concept_supported_methods_for_connecting_a_v_series_system_to_a_storage_array.html 
+sidebar: sidebar 
+keywords: supported, methods, connect, ontap, system, storage, array 
+summary: 패브릭 연결 구성으로 ONTAP 시스템을 스토리지 어레이에 연결할 수 있습니다. 패브릭 연결 구성은 독립 실행형 시스템과 HA 쌍 모두에서 지원됩니다. 직접 연결 구성은 일부 스토리지 어레이 및 일부 ONTAP 릴리즈로 제한됩니다. 
+---
+= ONTAP 시스템을 스토리지 배열에 연결하기 위해 지원되는 방법입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+패브릭 연결 구성으로 ONTAP 시스템을 스토리지 어레이에 연결할 수 있습니다. 패브릭 연결 구성은 독립 실행형 시스템과 HA 쌍 모두에서 지원됩니다. 직접 연결 구성은 일부 스토리지 어레이 및 일부 ONTAP 릴리즈로 제한됩니다.
+
+상호 운용성 매트릭스에는 ONTAP를 실행하는 특정 스토리지 어레이 및 플랫폼에서 지원되는 연결 방법에 대한 정보가 포함되어 있습니다.
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

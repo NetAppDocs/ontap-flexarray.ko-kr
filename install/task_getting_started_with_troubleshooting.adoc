@@ -1,0 +1,67 @@
+---
+permalink: install/task_getting_started_with_troubleshooting.html 
+sidebar: sidebar 
+keywords: get, started, troubleshoot, ontap, configuration, array, luns 
+summary: 어레이 LUN을 사용한 ONTAP 구성 문제를 해결하는 동안 체계적인 접근 방법을 따라 문제의 원인을 파악해야 합니다. 
+---
+= 어레이 LUN에 대한 ONTAP 구성 문제 해결을 시작합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+어레이 LUN을 사용한 ONTAP 구성 문제를 해결하는 동안 체계적인 접근 방법을 따라 문제의 원인을 파악해야 합니다.
+
+이 절차에서는 문제 해결 접근 순서를 제안합니다.
+
+[NOTE]
+====
+문제 해결 단계를 계속 진행할 때 문제에 대해 수집한 모든 정보를 저장하여 에스컬레이션의 경우 기술 지원에 이 정보를 제공할 수 있도록 해야 합니다.
+
+====
+.단계
+. 문제가 _front end_(해당하는 모든 플랫폼에 영향을 주는 ONTAP 문제) 또는 _backend_(스위치 또는 스토리지 배열 구성 문제)에 있는지 확인합니다.
++
+예를 들어, ONTAP 기능을 사용하려고 하는데 예상한 대로 작동하지 않는 경우 프런트 엔드에 문제가 있을 수 있습니다
+
+. 문제의 특성에 따라 적절한 조치를 취하십시오.
++
+|===
+| ONTAP 구성에 가 있는 경우... | 다음을 수행하십시오. 
+
+
+ a| 
+프런트엔드 문제
+ a| 
+ONTAP 설명서의 지침에 따라 ONTAP 기능 문제 해결을 진행합니다.
+
+https://docs.netapp.com/us-en/ontap/index.html["ONTAP 9 설명서"^]
+
+
+
+ a| 
+백엔드 문제입니다
+ a| 
+.. 상호 운용성 매트릭스를 확인하여 구성, 스토리지 어레이, 스토리지 어레이 펌웨어, 스위치 및 스위치 펌웨어가 지원되는지 확인하십시오.
++
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"^]
+
+.. 명령을 사용하여 `storage array config show` 시스템에서 감지할 수 있는 일반적인 백엔드 구성 오류가 있는지 확인합니다.
++
+ONTAP에서 백엔드 구성 오류를 감지하면 명령을 실행하여 오류에 대한 세부 정보를 얻어야 `storage errors show` 합니다.
+
+
+
+|===
+. 문제의 원인이 여전히 명확하지 않으면 다음 소스를 확인하여 시스템이 스토리지 배열 작업을 위한 요구 사항을 준수하는지 확인하십시오.
++
+** xref:concept_verifying_an_installation_with_storage_arrays.adoc[스토리지 배열 설치 확인]
+** https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["타사 스토리지를 위한 FlexArray 가상화 구축"]
+** https://docs.netapp.com/us-en/ontap-flexarray/implement-e-series/index.html["NetApp E-Series 스토리지를 위한 FlexArray 가상화 구축"]
+** https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"^]
+** https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"^]
+
+
+. 문제 해결에 도움이 필요한 경우 기술 지원 부서에 문의하십시오.
+

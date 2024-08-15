@@ -1,0 +1,20 @@
+---
+permalink: install/concept_sharing_storage_arrays_among_hosts.html 
+sidebar: sidebar 
+keywords: share, storage, arrays, hosts 
+summary: 일반적인 스토리지 어레이는 서로 다른 공급업체의 호스트에 스토리지를 제공합니다. 하지만 ONTAP의 경우 일부 스토리지 어레이가 ONTAP 시스템 전용이어야 합니다. 
+---
+= 호스트 간에 스토리지 시스템을 공유합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+일반적인 스토리지 어레이는 서로 다른 공급업체의 호스트에 스토리지를 제공합니다. 하지만 ONTAP의 경우 일부 스토리지 어레이가 ONTAP 시스템 전용이어야 합니다.
+
+공급업체의 스토리지 어레이가 ONTAP 시스템 전용이어야 하는지 여부를 확인하려면 _ 상호 운용성 매트릭스 _ 를 참조하십시오.
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

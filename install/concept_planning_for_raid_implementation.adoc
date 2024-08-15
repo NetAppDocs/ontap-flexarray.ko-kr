@@ -1,0 +1,14 @@
+---
+permalink: install/concept_planning_for_raid_implementation.html 
+sidebar: sidebar 
+keywords: plan, raid, implementation 
+summary: 스토리지 어레이 RAID 그룹의 LUN 크기와 수를 계획하고 호스트 간에 RAID 그룹을 공유할지 여부를 결정해야 합니다. 
+---
+= RAID 구현 계획
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 어레이 RAID 그룹의 LUN 크기와 수를 계획하고 호스트 간에 RAID 그룹을 공유할지 여부를 결정해야 합니다.

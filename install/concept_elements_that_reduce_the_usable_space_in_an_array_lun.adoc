@@ -1,0 +1,28 @@
+---
+permalink: install/concept_elements_that_reduce_the_usable_space_in_an_array_lun.html 
+sidebar: sidebar 
+keywords: elements, reduce, usable, space, array, lun 
+summary: 어레이 LUN의 가용 공간에 영향을 미치는 요인은 여러 가지입니다. 스토리지 LUN의 필요한 수와 크기를 계획할 때는 사용 중인 체크섬 유형과 구성할 수 있는 요소에 따라 스토리지 LUN에서 사용 가능한 공간을 고려해야 합니다. 
+---
+= 어레이 LUN에서 사용 가능한 공간을 줄이는 요소입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+어레이 LUN의 가용 공간에 영향을 미치는 요인은 여러 가지입니다. 스토리지 LUN의 필요한 수와 크기를 계획할 때는 사용 중인 체크섬 유형과 구성할 수 있는 요소에 따라 스토리지 LUN에서 사용 가능한 공간을 고려해야 합니다.
+
+스토리지 LUN에서 사용 가능한 공간을 계산할 때는 LUN의 사용 가능한 공간을 줄이는 다음 요소를 고려해야 합니다.
+
+* ONTAP에서 사용하도록 예약된 공간입니다
+* 코어 덤프를 위한 공간입니다
+* 볼륨 수준 스냅샷 예약입니다
+* 애그리게이트 레벨 스냅샷 복사본
+* 체크섬 유형(한 가지 유형 할당):
++
+** 블록 체크섬(BCS)
+** 고급 조닝된 체크섬(AZCS)
+
+
+

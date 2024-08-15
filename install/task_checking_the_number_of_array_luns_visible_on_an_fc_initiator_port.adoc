@@ -1,0 +1,41 @@
+---
+permalink: install/task_checking_the_number_of_array_luns_visible_on_an_fc_initiator_port.html 
+sidebar: sidebar 
+keywords: check, number, array, luns, visible, fc initiator, port 
+summary: FC 이니시에이터 포트에서 표시되는 어레이 LUN의 수를 확인할 수 있습니다. FC 이니시에이터 포트에 표시되는 지원되는 어레이 LUN 수는 ONTAP 릴리즈에 따라 다릅니다. 
+---
+= FC 이니시에이터 포트에 표시되는 어레이 LUN의 수를 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FC 이니시에이터 포트에서 표시되는 어레이 LUN의 수를 확인할 수 있습니다. FC 이니시에이터 포트에 표시되는 지원되는 어레이 LUN 수는 ONTAP 릴리즈에 따라 다릅니다.
+
+.단계
+. FC 이니시에이터 포트에서 표시되는 번호를 확인합니다. `storage array config show -initiator initiator_number`
++
+`storage array config show -initiator 0a`
+
+. 한 노드에 대해 둘 이상의 스토리지 LUN 그룹이 있는 경우 해당 노드에 대한 모든 LUN 그룹의 스토리지 LUN 수를 추가하여 해당 노드의 지정된 FC 이니시에이터에 표시되는 총 스토리지 LUN의 수를 결정합니다.
++
+다음 예제는 모든 노드의 FC 이니시에이터 0a에 대한 출력을 보여줍니다. 특정 FC Initiator에 표시되는 _specific_node의 스토리지 LUN 수를 확인하려면 해당 노드에 대해 표시된 모든 타겟 포트에서 해당 노드의 항목을 확인해야 합니다. 예를 들어, vgv3070f51-01:0a를 통해 확인된 어레이 LUN 수를 찾으려면 LUN 그룹 1(HP)의 LUN 개수 24를 LUN 그룹 2(DGC_RAID5_1)의 LUN 개수 1에 추가합니다. 이때 vgv3070f51-01:0a에 표시되는 총 25개의 어레이 LUN 수를 입력하면 됩니다.
+
++
+동일한 프로세스에 따라 LUN 그룹 0 및 LUN 그룹 2에 대해 vgv3070f51-02:0a에 표시되는 어레이 LUN의 수를 결정합니다. 여기에는 또한 25가 포함됩니다.
+
++
+[listing]
+----
+
+vgv3070f51::> storage array config show -initiator 0a
+             LUN   LUN
+Node         Group Count    Array Name     Array Target Port Initiator
+------------ ----- -----    -----------  ------------------  -------
+vgv3070f51-01    1    24             HP    50014380025d1508     0a
+                 2     1    DGC_RAID5_1    200600a0b819e16f     0a
+vgv3070f51-02    0    24             HP    50014380025d1508     0a
+                 2     1    DGC_RAID5_1    200600a0b819e16f     0a
+----
+

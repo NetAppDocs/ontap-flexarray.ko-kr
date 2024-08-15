@@ -1,0 +1,24 @@
+---
+permalink: implement-third-party/concept_how_emc_vnx_storage_arrays_control_access_to_data.html 
+sidebar: sidebar 
+keywords: emc, vnx, storage, array, control, access, data 
+summary: EMC VNX 스토리지는 스토리지 그룹을 사용하여 데이터 액세스를 제어합니다. 스토리지 그룹은 스토리지 시스템 내에 있는 하나 이상의 LUN으로, 스토리지 LUN과 연결된 호스트에서만 액세스할 수 있습니다. 호스트는 스토리지 그룹에 속하지 않는 스토리지 LUN의 데이터를 액세스하거나 수정할 수 없습니다. 
+---
+= EMC VNX 스토리지 시스템이 데이터 액세스를 제어하는 방법
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EMC VNX 스토리지는 스토리지 그룹을 사용하여 데이터 액세스를 제어합니다. 스토리지 그룹은 스토리지 시스템 내에 있는 하나 이상의 LUN으로, 스토리지 LUN과 연결된 호스트에서만 액세스할 수 있습니다. 호스트는 스토리지 그룹에 속하지 않는 스토리지 LUN의 데이터를 액세스하거나 수정할 수 없습니다.
+
+ONTAP는 다음 규칙을 따르는 경우 여러 스토리지 그룹을 지원합니다.
+
+* 스위치 조닝을 통해 ONTAP 시스템의 FC 이니시에이터 포트에서 각 어레이 LUN 그룹을 액세스하는 데 사용할 타겟 포트를 정의해야 합니다.
+* LUN 마스킹을 사용하여 스토리지 LUN에 대한 호스트 액세스를 제한해야 합니다.
+* 스토리지 그룹은 각 FC 이니시에이터 포트에 제공되는 스토리지 LUN 그룹을 정의해야 합니다.
+* 각 어레이 LUN 그룹에 각 ONTAP 시스템에 하나의 FC 이니시에이터 포트 쌍이 필요합니다.
+
+
+스토리지 LUN 인접 영역을 사용하는 경우 동일한 인접 영역의 V 시리즈 시스템은 동일한 스토리지 그룹에 있어야 합니다.

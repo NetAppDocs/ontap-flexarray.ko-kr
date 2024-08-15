@@ -1,0 +1,14 @@
+---
+permalink: install/reference_relationship_between_zoning_and_host_group_configuration.html 
+sidebar: sidebar 
+keywords: relationship, between, zone, host, group, configuration 
+summary: 조닝 구성 오류를 수정할 때 호스트 그룹 구성도 변경해야 하는 경우가 있으며 그 반대도 변경해야 합니다. 
+---
+= 조닝과 호스트 그룹 구성 간의 관계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+조닝 구성 오류를 수정할 때 호스트 그룹 구성도 변경해야 하는 경우가 있으며 그 반대도 변경해야 합니다.

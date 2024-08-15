@@ -1,0 +1,22 @@
+---
+permalink: install/concept_planning_for_lun_security_on_storage_arrays.html 
+sidebar: sidebar 
+keywords: plan, lun, security, storage, arrays 
+summary: ONTAP 시스템을 스토리지 어레이와 함께 사용하는 경우, LUN 보안 방법을 사용하여 ONTAP이 아닌 시스템이 ONTAP 시스템에서 소유한 어레이 LUN을 덮어쓸 가능성을 없애야 합니다. 
+---
+= 스토리지 시스템의 LUN 보안 계획
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템을 스토리지 어레이와 함께 사용하는 경우, LUN 보안 방법을 사용하여 ONTAP이 아닌 시스템이 ONTAP 시스템에서 소유한 어레이 LUN을 덮어쓸 가능성을 없애야 합니다.
+
+LUN 보안은 특정 어레이 LUN에 액세스할 수 있는 호스트를 격리하는 방법입니다. LUN 보안은 스위치 조닝의 개념과 유사하지만 스토리지 시스템에서 수행됩니다. _LUN security_와 _LUN masking_은 이 기능을 설명하는 것과 동일한 용어입니다.
+
+[NOTE]
+====
+ONTAP 디스크 소유권 구조는 한 ONTAP 시스템이 다른 ONTAP 시스템이 소유한 어레이 LUN을 덮어쓰지 않도록 합니다. 그러나 ONTAP 시스템이 비 ONTAP 호스트가 액세스할 수 있는 어레이 LUN을 덮어쓰지 않도록 합니다. 마찬가지로, 덮어쓰기를 방지하는 방법이 없으면 ONTAP이 아닌 호스트가 ONTAP 시스템에서 사용하는 어레이 LUN을 덮어쓸 수 있습니다.
+
+====

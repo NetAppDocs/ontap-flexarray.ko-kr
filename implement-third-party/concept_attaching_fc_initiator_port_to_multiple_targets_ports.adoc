@@ -1,0 +1,37 @@
+---
+permalink: implement-third-party/concept_attaching_fc_initiator_port_to_multiple_targets_ports.html 
+sidebar: sidebar 
+keywords: attach, fc initiator, port, multiple targets, ports 
+summary: ONTAP 시스템의 FC 이니시에이터 포트를 같은 제품군 내에 있는 별도의 스토리지 어레이에 있는 여러 대상 포트에 연결할 수 있습니다. 이 구성은 ONTAP의 MetroCluster 구성에서 지원됩니다. 
+---
+= FC 이니시에이터 포트를 여러 타겟 포트에 연결
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템의 FC 이니시에이터 포트를 같은 제품군 내에 있는 별도의 스토리지 어레이에 있는 여러 대상 포트에 연결할 수 있습니다. 이 구성은 ONTAP의 MetroCluster 구성에서 지원됩니다.
+
+ONTAP는 HA 쌍 및 독립 실행형 시스템에서 여러 타겟 포트와 FC 이니시에이터 포트를 공유할 수 있도록 지원합니다. 이 구성은 시스템에서 실행되는 ONTAP 릴리스에 대해 지원되는 상호 운용성 매트릭스에 나열된 모든 스토리지 어레이에서 사용할 수 있도록 지원됩니다.
+
+[NOTE]
+====
+FC 이니시에이터 포트를 여러 타겟 포트 및 조닝과 공유하는 방법에 대한 자세한 내용은 _ FlexArray 가상화 설치 요구사항 및 참조 _ 의 정보를 참조하십시오
+
+====
+
+
+== 개별 스토리지 어레이의 타겟 포트에 연결되는 단일 ONTAP FC 이니시에이터 포트
+
+다음 예제는 단일 ONTAP FC 이니시에이터 포트가 서로 다른 스토리지 어레이의 여러 타겟 포트에 연결되는 HA 쌍을 보여줍니다.
+
+image::../media/shared_initiator_ports_different_arrays.gif[연결 및 영역 지정은 주변 텍스트에 설명되어 있습니다.]
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["FlexArray 가상화 설치 요구 사항 및 참조 자료"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["패브릭 연결 MetroCluster 설치 및 구성"]

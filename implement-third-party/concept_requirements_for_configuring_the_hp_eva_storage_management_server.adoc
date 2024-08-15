@@ -1,0 +1,18 @@
+---
+permalink: implement-third-party/concept_requirements_for_configuring_the_hp_eva_storage_management_server.html 
+sidebar: sidebar 
+keywords: requirements, configuring, hp, eva, storage, management, server 
+summary: ONTAP 시스템에 있는 FC 이니시에이터 포트와 HP EVA 스토리지 관리 서버에 있는 이니시에이터 포트를 공통 EVA 타겟 포트와 공유하면 호환성 문제가 발생합니다. 
+---
+= HP EVA Storage Management Server 구성 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템에 있는 FC 이니시에이터 포트와 HP EVA 스토리지 관리 서버에 있는 이니시에이터 포트를 공통 EVA 타겟 포트와 공유하면 호환성 문제가 발생합니다.
+
+ONTAP 시스템에 있는 FC 이니시에이터 포트와 EVA 스토리지 관리 서버 이니시에이터 포트에 대한 다양한 호스트 설정에서 호환성 문제가 발생합니다.
+
+HP는 패브릭에 상주하는 모든 HP EVA Storage Management Server를 모든 운영 체제와 분리된 존에 구성하는 것이 좋습니다.

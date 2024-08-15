@@ -1,0 +1,106 @@
+---
+permalink: install/concept_guidelines_for_connecting_a_v_series_system_to_native_disk_shelves.html 
+sidebar: sidebar 
+keywords: guidelines, connect, v-series, system, native, disk, shelves, fc initiator, ports 
+summary: V 시리즈 시스템을 기본 디스크 쉘프에 연결하는 방법을 계획할 때 포트 간 연결 계획에서는 이중화 및 기타 지침을 다루어야 합니다. 
+---
+= V 시리즈 시스템을 기본 디스크 쉘프에 연결하기 위한 지침
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+V 시리즈 시스템을 기본 디스크 쉘프에 연결하는 방법을 계획할 때 포트 간 연결 계획에서는 이중화 및 기타 지침을 다루어야 합니다.
+
+
+
+== 디스크에 필요한 FC 이니시에이터 포트의 수입니다
+
+V-Series 시스템을 디스크 쉘프에 연결하는 데 필요한 FC 이니시에이터 포트 수는 V-Series 시스템이 독립 실행형 시스템인지 또는 HA 쌍인지에 따라 다릅니다
+
+[cols="2*"]
+|===
+| 구성 | FC 이니시에이터 포트의 수입니다 
+
+
+ a| 
+독립형 시스템
+ a| 
+* 하나의 루프를 사용하는 경우: FC 이니시에이터 포트 1개.
+* 2개의 루프를 연결하는 경우: FC 이니시에이터 포트 2개, 각 루프에 대해 하나씩
+
+
+
+
+ a| 
+HA 쌍으로 된
+ a| 
+* 다중 경로 스토리지를 사용하는 경우 각 루프에 대해 2개의 FC 이니시에이터 포트를 사용합니다.
+* 다중 경로 스토리지를 사용하지 않는 경우 구성의 각 루프에 대해 하나의 FC 이니시에이터 포트를 사용합니다.
+
+
+|===
+
+
+== V 시리즈 시스템과 디스크 간 연결
+
+FAS 시스템을 기본 디스크 쉘프에 연결할 때와 동일한 프로세스를 사용하여 V-Series 시스템을 기본 디스크 쉘프에 케이블을 연결할 수 있습니다. 포트-포트 연결 체계를 생성할 때 이 가이드와 다음 표의 ONTAP 및 하드웨어 가이드에서는 디스크 및 디스크 쉘프의 설치 및 관리에 대한 정보를 제공합니다.
+
+[cols="2*"]
+|===
+| 자세한 정보... | 참조... 
+
+
+ a| 
+지원되는 디스크 속도 및 디스크 용량을 포함한 디스크 지원
+ a| 
+https://mysupport.netapp.com/site/global/dashboard["NetApp 지원"]
+
+
+
+ a| 
+랙 또는 시스템 캐비닛에 V 시리즈 시스템 설치
+ a| 
+새 시스템에서 이 작업은 일반적으로 공장에서 수행됩니다. 자세한 내용은 캐비닛 설명서를 참조하십시오.
+
+
+
+ a| 
+디스크 쉘프를 독립형 V-Series 시스템에 연결
+ a| 
+사용 중인 플랫폼에 대한 설치 및 설정 지침
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1213632["32xx 시스템 설치 및 설정 지침"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMP1147995["62xx 시스템 설치 및 설정 지침"]
+
+
+
+
+ a| 
+디스크 쉘프에 HA 쌍 연결
+ a| 
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["고가용성 구성"]
+
+
+
+ a| 
+디스크 쉘프 추가
+ a| 
+디스크 쉘프 유형에 적합한 가이드입니다.
+
+
+
+ a| 
+디스크 쉘프 이동
+ a| 
+디스크 쉘프 유형에 적합한 가이드입니다.
+
+
+
+ a| 
+디스크 관리
+ a| 
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["디스크 및 애그리게이트 관리"]
+
+|===

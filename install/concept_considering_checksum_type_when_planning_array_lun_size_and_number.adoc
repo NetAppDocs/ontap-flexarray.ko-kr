@@ -1,0 +1,16 @@
+---
+permalink: install/concept_considering_checksum_type_when_planning_array_lun_size_and_number.html 
+sidebar: sidebar 
+keywords: consider, checksum, type, plan, array, lun, size, number 
+summary: ONTAP에 필요한 어레이 LUN의 수와 크기를 계획할 때는 스토리지 LUN의 사용 가능한 공간에 대한 체크섬 유형의 영향을 고려해야 합니다. ONTAP 시스템에 할당된 각 스토리지 LUN에 대해 체크섬 유형을 지정해야 합니다. 
+---
+= 스토리지 LUN 크기 및 수를 계획할 때 체크섬 유형을 고려
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP에 필요한 어레이 LUN의 수와 크기를 계획할 때는 스토리지 LUN의 사용 가능한 공간에 대한 체크섬 유형의 영향을 고려해야 합니다. ONTAP 시스템에 할당된 각 스토리지 LUN에 대해 체크섬 유형을 지정해야 합니다.
+
+스토리지 시스템의 스토리지 LUN이 ONTAP 시스템에서 사용하도록 매핑되면 ONTAP은 어레이 LUN을 포맷되지 않은 원시 디스크로 처리합니다. 스토리지 LUN을 ONTAP 시스템에 할당할 때 체크섬 유형을 지정하면 ONTAP에 원시 스토리지 LUN을 포맷하는 방법을 알려줍니다. 체크섬 유형이 사용 가능한 공간에 미치는 영향은 LUN에 대해 지정한 체크섬 유형에 따라 달라집니다.

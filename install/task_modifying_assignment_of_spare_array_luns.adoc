@@ -1,0 +1,36 @@
+---
+permalink: install/task_modifying_assignment_of_spare_array_luns.html 
+sidebar: sidebar 
+keywords: modify, assignment, spare, array, luns 
+summary: 스페어 스토리지 LUN의 소유권을 다른 노드로 변경할 수 있습니다. 노드에 대한 로드 밸런싱을 위해 이 작업을 수행할 수 있습니다. 
+---
+= 스페어 스토리지 LUN 할당 수정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+_spare_array LUN의 소유권을 다른 노드로 변경할 수 있습니다. 노드에 대한 로드 밸런싱을 위해 이 작업을 수행할 수 있습니다.
+
+.단계
+. 재할당할 스토리지 LUN을 소유하는 노드의 콘솔에서 다음 명령을 입력하여 노드의 스페어 어레이 LUN 목록을 확인합니다. `storage disk show -owner local`
++
+노드에서 소유한 어레이 LUN, 애그리게이트의 스페어와 LUN이 모두 나열됩니다.
+
+. 다른 노드에 재할당할 LUN이 예비 LUN인지 확인합니다.
+. 스토리지 LUN의 소유권을 다른 노드에 할당하려면 다음 명령을 입력합니다. `storage disk assign arrayLUNname -owner new_owner_name -force`
++
+[NOTE]
+====
+force 옵션을 사용하지 않거나 어레이 LUN이 이미 애그리게이트에 추가된 경우에는 어레이 LUN 소유권이 변경되지 않습니다.
+
+====
+. 다음 명령을 입력하여 스페어 스토리지 LUN의 소유권이 다른 노드로 변경되었는지 확인합니다. `storage disk show -owner local`
++
+새 소유자로 변경한 스페어 어레이 LUN이 스페어 목록에 더 이상 나타나지 않아야 합니다. 스토리지 LUN이 계속 나타나면 명령을 반복하여 소유권을 변경합니다.
+
+. 대상 노드에서 다음 명령을 입력하여 소유권이 변경된 스페어 스토리지 LUN이 대상 노드에서 소유하는 스페어로 나열되는지 확인합니다. `storage disk show -owner local`
+
+
+어레이 LUN을 스토리지에 사용하려면 먼저 애그리게이트에 LUN을 추가해야 합니다.

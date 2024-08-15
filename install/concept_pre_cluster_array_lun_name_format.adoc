@@ -1,0 +1,58 @@
+---
+permalink: install/concept_pre_cluster_array_lun_name_format.html 
+sidebar: sidebar 
+keywords: pre cluster, array, lun, name, format, ontap, systems 
+summary: 노드가 클러스터에 결합되기 전이나 시스템이 유지보수 모드일 때 어레이 LUN 이름은 사전 클러스터 형식인 Data ONTAP 8.3 이전에 사용된 형식을 따릅니다. 
+---
+= 클러스터 전 스토리지 LUN 이름 형식입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+노드가 클러스터에 결합되기 전이나 시스템이 유지보수 모드일 때 어레이 LUN 이름은 Data ONTAP 8.3 이전에 사용된 형식인 _pre-cluster_format에 따릅니다.
+
+이 형식에서 스토리지 LUN 이름은 ONTAP 시스템과 스토리지 배열 사이의 경로에 있는 디바이스, 사용된 포트 및 스토리지 배열이 호스트에 매핑하기 위해 외부에 제공하는 경로의 SCSI LUN ID를 포함하는 경로 기반 이름입니다.
+
+어레이 LUN을 지원하는 ONTAP 시스템에서는 각 LUN에 대한 경로가 여러 개이기 때문에 각 어레이 LUN에 여러 개의 이름을 지정할 수 있습니다.
+
+
+
+== ONTAP 시스템의 스토리지 LUN 이름 형식입니다
+
+|===
+| 구성 | 스토리지 LUN 이름 형식입니다 | 부품 설명 
+
+
+ a| 
+직접 연결
+ a| 
+`node-name.adapter.idlun-id`
+ a| 
+`node-name` 클러스터형 노드의 이름입니다. ONTAP를 사용하면 노드 이름 앞에 LUN 이름이 추가되어 클러스터 내에서 경로 기반 이름이 고유합니다. Adapter는 ONTAP 시스템의 어댑터 번호입니다.
+
+`id` 은 스토리지 배열의 채널 어댑터 포트입니다.
+
+`lun-id` 스토리지 배열이 호스트에 제공하는 스토리지 LUN 번호입니다.
+
+예: `node1.0a.0L1`
+
+
+
+ a| 
+광 연결
+ a| 
+`node-name:switch-name:port.idlun-id`
+ a| 
+`node-name` 노드의 이름입니다. ONTAP를 사용하면 노드 이름 앞에 LUN 이름이 추가되어 클러스터 내에서 경로 기반 이름이 고유합니다. `switch-name` 은 스위치의 이름입니다.
+
+`port` 는 대상 포트(끝 지점)에 연결된 스위치 포트입니다.
+
+`id` 장치 ID입니다.
+
+`lun-id` 스토리지 배열이 호스트에 제공하는 스토리지 LUN 번호입니다.
+
+예: `node1:brocade3:6.126L1`
+
+|===

@@ -1,0 +1,14 @@
+---
+permalink: implement-third-party/concept_requirements_for_creating_luns_in_dynamic_pools.html 
+sidebar: sidebar 
+keywords: requirements, creating, luns, dynamic pools 
+summary: 동적 풀에서 LUN을 생성할 때 풀 용량을 과도하게 프로비저닝하지 마십시오. 
+---
+= 동적 풀에서 LUN을 생성하기 위한 요구 사항입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+동적 풀에서 LUN을 생성할 때 풀 용량을 과도하게 프로비저닝하지 마십시오.

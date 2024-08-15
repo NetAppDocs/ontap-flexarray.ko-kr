@@ -1,0 +1,36 @@
+---
+section: implement-e-series
+title: E-Series 스토리지 구현
+url: "/implement-e-series/index.html"
+entries:
+- title: 스토리지 배열 구성에 대한 정보를 찾을 수 있는 위치입니다
+  url: "/implement-e-series/concept_where_to_find_information_for_configurations_with_storage_arrays.html"
+  entries:
+  - title: 스토리지 어레이에 대한 ONTAP 지원에 대한 정보를 찾을 수 있는 위치입니다
+    url: "/implement-e-series/concept_where_to_find_information_about_support_for_storage_arrays.html"
+- title: 스토리지 어레이에서 어레이 LUN을 사용할 수 있는 ONTAP 시스템입니다
+  url: "/implement-e-series/concept_systems_that_can_use_array_luns_on_storage_arrays.html"
+- title: E-Series 스토리지 시스템 구성 요구 사항
+  url: "/implement-e-series/reference_requirements_for_configuring_e_series_storage_arrays.html"
+  entries:
+  - title: E-Series 스토리지 시스템에 필요한 호스트 유형입니다
+    url: "/implement-e-series/reference_required_host_type_for_e_series_storage_arrays_reference.html"
+- title: E-Series 스토리지 어레이에 대해 지원되는 패브릭 연결 구성
+  url: "/implement-e-series/reference_supported_fabric_attached_configurations_for_storage_arrays.html"
+  entries:
+  - title: 독립형 기본 구성
+    url: "/implement-e-series/concept_stand_alone_basic_configuration.html"
+  - title: 2포트 스토리지 LUN 그룹 2개가 있는 독립형 시스템
+    url: "/implement-e-series/concept_stand_alone_system_with_two_2_port_array_lun_groups.html"
+  - title: 단일 4포트 스토리지 LUN 그룹 구성
+    url: "/implement-e-series/concept_single_4_port_array_lun_group_configuration.html"
+  - title: 2개의 4포트 스토리지 LUN 그룹 구성
+    url: "/implement-e-series/concept_two_4_port_array_lun_group_configuration.html"
+  - title: 8포트 스토리지 LUN 그룹 구성
+    url: "/implement-e-series/concept_eight_port_array_lun_group_configuration.html"
+  - title: FC 이니시에이터 포트를 여러 타겟 포트에 연결
+    url: "/implement-e-series/concept_attaching_fc_initiator_port_to_multiple_targets_ports.html"
+  - title: 타겟 포트를 2개의 FC 이니시에이터 포트와 공유하는 경우
+    url: "/implement-e-series/concept_sharing_a_target_port_with_two_fc_initiator_ports.html"
+- title: E-Series 스토리지 어레이에서 지원되는 직접 연결 구성
+  url: "/implement-e-series/reference_supported_direct_attached_configurations_for_e_series_storage_arrays.html"

@@ -1,0 +1,33 @@
+---
+permalink: install/task_checking_the_checksum_type_of_spare_array_luns.html 
+sidebar: sidebar 
+keywords: check, checksum, type, spare, array, luns 
+summary: 이름을 지정하여 스페어 어레이 LUN을 애그리게이트에 추가하려는 경우 추가하려는 어레이 LUN의 체크섬 유형이 애그리게이트 체크섬 유형과 같은지 확인해야 합니다. 
+---
+= 스페어 스토리지 LUN의 체크섬 유형을 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이름을 지정하여 스페어 어레이 LUN을 애그리게이트에 추가하려는 경우 추가하려는 어레이 LUN의 체크섬 유형이 애그리게이트 체크섬 유형과 같은지 확인해야 합니다.
+
+어레이 LUN 애그리게이트에서 체크섬 유형이 서로 다른 어레이 LUN을 혼합할 수 없습니다. 애그리게이트의 체크섬 유형과 애그리게이트에 추가된 어레이 LUN의 체크섬 유형이 동일해야 합니다.
+
+애그리게이트에 추가할 스페어 어레이 LUN의 수를 지정할 경우 기본적으로 ONTAP은 aggregate와 체크섬 유형이 동일한 어레이 LUN을 선택합니다.
+
+[NOTE]
+====
+조닝된 체크섬 어레이 LUN을 사용하여 새로 생성한 모든 애그리게이트의 체크섬 유형은 _ AZCS(Advanced Zoned checksum_)입니다. 조닝된 체크섬 유형은 기존 조닝된 체크섬 유형에 대해 계속 지원됩니다. 조닝된 체크섬 스페어 어레이 LUN이 기존 조닝된 체크섬 애그리게이트에 추가되어 계속해서 조닝된 체크섬 어레이 LUN이 됩니다. AZCS 체크섬 유형 애그리게이트에 추가된 조닝된 체크섬 스페어 어레이 LUN은 체크섬 관리에 AZCS 체크섬 스키마를 사용합니다.
+
+====
+.단계
+. 다음 명령을 입력하여 스페어 스토리지 LUN의 체크섬 유형을 확인합니다.
++
+`storage disk show -fields checksum-compatibility -container-type spare`
+
++
+블록 체크섬 어레이 LUN을 블록 체크섬 애그리게이트에, 조닝된 어레이 LUN을 AZCS(첨단 조닝된 체크섬_) 애그리게이트에 추가할 수 있습니다.
+
+

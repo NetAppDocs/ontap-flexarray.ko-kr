@@ -1,0 +1,14 @@
+---
+permalink: install/concept_managing_array_luns_using_data_ontap.html 
+sidebar: sidebar 
+keywords: manage, array, luns, ontap 
+summary: 스토리지 어레이 관리자가 노드 크기 조정 등의 목적으로 어레이 LUN을 할당한 후에 어레이 LUN에 대한 구성을 변경하려는 경우 스토리지 어레이에서 LUN을 재구성하기 전에 ONTAP에서 몇 가지 작업을 수행해야 할 수 있습니다. 
+---
+= ONTAP를 사용하여 어레이 LUN 관리
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 어레이 관리자가 노드 크기 조정 등의 목적으로 어레이 LUN을 할당한 후에 어레이 LUN에 대한 구성을 변경하려는 경우 스토리지 어레이에서 LUN을 재구성하기 전에 ONTAP에서 몇 가지 작업을 수행해야 할 수 있습니다.

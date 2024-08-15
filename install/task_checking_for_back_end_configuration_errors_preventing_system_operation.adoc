@@ -1,0 +1,58 @@
+---
+permalink: install/task_checking_for_back_end_configuration_errors_preventing_system_operation.html 
+sidebar: sidebar 
+keywords: check, back-end, configuration, errors, prevent, system, operation 
+summary: ONTAP에서는 스토리지 어레이와 ONTAP 시스템이 정상적으로 작동하지 않는 일반적인 백엔드 구성 오류를 수정해야 합니다. 스토리지 배열 config show 명령을 사용하면 백엔드 구성 오류가 있는지 여부를 확인하는 데 도움이 됩니다. 
+---
+= 시스템 작동을 방해하는 백엔드 구성 오류를 확인하는 중입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP에서는 스토리지 어레이와 ONTAP 시스템이 정상적으로 작동하지 않는 일반적인 백엔드 구성 오류를 수정해야 합니다.  `storage array config show`명령을 사용하면 백엔드 구성 오류가 있는지 여부를 확인하는 데 도움이 됩니다.
+
+.단계
+. 다음 명령을 입력합니다. `storage array config show`
++
+설치 확인(및 문제 해결)의 첫 번째 단계는 명령을 실행하는 `storage array config show` 것입니다. ONTAP가 백엔드 구성에서 오류를 감지하면 출력 하단에 다음 메시지가 표시됩니다 `storage array config show` .
+
++
+[listing]
+----
+Warning: Configuration errors were detected.  Use 'storage errors show' for detailed information.
+----
+. 다음과 같이 적절한 조치를 취하십시오.
++
+|===
+| 만약... | 그러면... 
+
+
+ a| 
+`storage array config show` 를 실행하도록 안내합니다 `storage errors show`
+ a| 
+3단계로 이동합니다.
+
+
+
+ a| 
+`storage array config show` 를 실행하도록 지시하지 않습니다 `storage errors show`
+ a| 
+ `storage array config show`출력을 검토하여 원하는 구성을 출력에 반영하는지 확인합니다. 백엔드 구성이 예상 출력과 일치하는지 확인 섹션을 참조하십시오. (이 절차의 다음 단계를 계속할 필요는 없습니다.) xref:task_verifying_if_the_back_end_configuration_matches_the_expected_output.adoc[백엔드 구성이 예상 출력과 일치하는지 확인합니다]
+
+|===
+. 다음 명령을 입력합니다. `storage errors show`
++
+ `storage errors show`명령을 실행하면 어레이 LUN 레벨에서 문제에 대한 세부 정보가 표시됩니다.
+
+. 오류 메시지를 검토하고 표시된 오류를 수정합니다.
++
+에 표시된 모든 오류를 수정해야 `storage errors show`합니다.  `storage errors show`에서 감지된 각 문제의 원인과 해결 방법에 대한 자세한 내용은 메시지 및 해결 방법 섹션을 `storage errors show` 참조하십시오. xref:reference_the_storage_errors_show_messages_and_their_resolution.adoc[저장 오류는 메시지 및 해결 방법을 보여 줍니다]
+
+. 문제를 해결한 후 를 `storage errors show` 다시 실행하여 오류가 해결되었는지 확인합니다.
++
+ `storage errors show`문제가 계속 표시되면 문서를 다시 검토하여 수행할 작업에 대한 자세한 내용을 확인하거나 기술 지원 부서에 문의하십시오.
+
+. 백엔드 구성 오류를 해결한 후 `storage array config show` 출력을 검토하여 구성이 예상 출력에 맞는지 확인할 수 있도록 다시 실행합니다.
+

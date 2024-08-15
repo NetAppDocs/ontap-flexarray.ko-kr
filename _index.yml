@@ -1,0 +1,27 @@
+---
+indexpage:
+  title: ONTAP FlexArray 설명서
+  summary: ONTAP FlexArray 설명서
+  keywords: flexarray, ontap, array
+  lead: ONTAP FlexArray 설명서
+  tiles:
+  - title: E-Series 스토리지 구현
+    links:
+    - title: E-Series 스토리지 시스템 구성 요구 사항
+      url: "/implement-e-series/reference_requirements_for_configuring_e_series_storage_arrays.html"
+    - title: E-Series 스토리지 어레이에 대해 지원되는 패브릭 연결 구성
+      url: "/implement-e-series/reference_supported_fabric_attached_configurations_for_storage_arrays.html"
+    - title: E-Series 스토리지 어레이에서 지원되는 직접 연결 구성
+      url: "/implement-e-series/reference_supported_direct_attached_configurations_for_e_series_storage_arrays.html"
+  - title: 타사 스토리지 구현
+    links:
+    - title: 모든 스토리지 시스템에 대한 구성 지침
+      url: "/implement-third-party/concept_general_configuration_guidelines_for_all_storage_arrays.html"
+    - title: 지원되는 패브릭 연결 구성
+      url: "/implement-third-party/reference_supported_fabric_attached_configurations_for_storage_arrays.html"
+  - title: FlexArray를 설치하는 중입니다
+    links:
+    - title: 스토리지 LUN을 사용한 구성 계획
+      url: "/install/concept_planning_a_configuration_with_array_luns.html"
+    - title: ONTAP 시스템에서 사용할 스토리지 어레이 준비
+      url: "/install/task_preparing_a_storage_array_for_use_with_ontap_systems.html"

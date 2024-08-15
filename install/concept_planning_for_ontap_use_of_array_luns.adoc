@@ -1,0 +1,27 @@
+---
+permalink: install/concept_planning_for_ontap_use_of_array_luns.html 
+sidebar: sidebar 
+keywords: plan, ontap, use, array, luns 
+summary: ONTAP에서 어레이 LUN을 사용하려면 스토리지 시스템 관리자가 먼저 스토리지 시스템에서 LUN을 생성하여 ONTAP에서 사용할 수 있도록 해야 합니다. 그런 다음 ONTAP 관리자는 스토리지 배열에서 제공한 어레이 LUN을 사용하도록 ONTAP를 구성해야 합니다. 
+---
+= 스토리지 LUN의 ONTAP 사용 계획
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP에서 어레이 LUN을 사용하려면 스토리지 시스템 관리자가 먼저 스토리지 시스템에서 LUN을 생성하여 ONTAP에서 사용할 수 있도록 해야 합니다. 그런 다음 ONTAP 관리자는 스토리지 배열에서 제공한 어레이 LUN을 사용하도록 ONTAP를 구성해야 합니다.
+
+ONTAP 사용을 위해 스토리지 LUN을 프로비저닝하는 방법을 계획하는 데에는 다음과 같은 고려 사항이 포함됩니다.
+
+* ONTAP이 지원하는 어레이 LUN의 유형입니다
+* ONTAP 최소 및 최대 어레이 LUN 크기
+* 필요한 어레이 LUN 수
+
+
+[NOTE]
+====
+ONTAP은 어레이 LUN을 가상 디스크로 간주합니다.
+
+====

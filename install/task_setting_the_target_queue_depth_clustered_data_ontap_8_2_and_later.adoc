@@ -1,0 +1,41 @@
+---
+permalink: install/task_setting_the_target_queue_depth_clustered_data_ontap_8_2_and_later.html 
+sidebar: sidebar 
+keywords: set, target, queue, depth 
+summary: 대부분의 구현에서는 기본 대상 대기열 길이를 사용할 수 있지만 성능 문제가 발생할 경우 변경할 수 있습니다. 
+---
+= 대상 대기열 길이를 설정합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+대부분의 구현에서는 기본 대상 대기열 길이를 사용할 수 있지만 성능 문제가 발생할 경우 변경할 수 있습니다.
+
+스토리지 배열별 또는 타겟별 포트별로 타겟 대기열 길이를 설정할 수 있습니다.
+
+.단계
+. 다음 명령 중 하나를 사용하여 모든 타겟 포트 또는 스토리지 배열의 특정 타겟 포트에 대상 포트 대기열 길이를 설정합니다.
++
+|===
+| 원하는 작업 | 다음 명령 시퀀스 사용... 
+
+
+ a| 
+스토리지 배열의 모든 타겟 포트에 대상 포트 대기열 깊이를 설정합니다
+ a| 
+`set advanced` `storage array port modify -name array_name -max-queue-depth value`
+
+
+
+ a| 
+스토리지 배열의 특정 대상 포트에 대한 대상 포트 대기열 길이를 설정합니다
+ a| 
+`set advanced` `storage array port modify -name array_name -wwnn value -wwpn value -max-queue-depth value`
+
+|===
++
+이러한 명령에 대한 자세한 내용은 man 페이지를 참조하십시오.
+
+

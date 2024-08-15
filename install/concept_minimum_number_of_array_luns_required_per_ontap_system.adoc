@@ -1,0 +1,18 @@
+---
+permalink: install/concept_minimum_number_of_array_luns_required_per_ontap_system.html 
+sidebar: sidebar 
+keywords: minimum, number, array, luns, required, ontap, system 
+summary: ONTAP 시스템당 필요한 어레이 LUN의 수는 루트 볼륨의 위치에 따라 다릅니다. 
+---
+= ONTAP 시스템당 필요한 최소 어레이 LUN 수입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 시스템당 필요한 어레이 LUN의 수는 루트 볼륨의 위치에 따라 다릅니다.
+
+루트 볼륨은 디스크 또는 어레이 LUN에 있을 수 있습니다. 그런 다음 루트 볼륨의 위치에 따라 필요한 최소 어레이 LUN 수가 결정됩니다. 루트 볼륨이 스토리지 어레이에 있는 경우 각 독립 실행형 ONTAP 시스템과 HA 쌍의 각 노드가 적어도 하나의 어레이 LUN을 소유해야 합니다. 루트 볼륨이 기본 디스크에 있는 경우 스토리지 LUN만 데이터 스토리지에 필요합니다.
+
+스토리지 LUN을 사용하는 MetroCluster 구성의 경우 루트 볼륨이 스토리지 시스템에 있는 경우 스토리지 LUN 2개(각 사이트의 LUN 1개)가 필요합니다. 루트 볼륨을 미러링하려면 두 개의 LUN이 필요합니다.

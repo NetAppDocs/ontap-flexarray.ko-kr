@@ -1,0 +1,85 @@
+---
+permalink: install/reference_the_storage_errors_show_messages_and_their_resolution.html 
+sidebar: sidebar 
+keywords: storage, errors, show, messages, resolution 
+summary: 저장소 오류가 오류 상태를 플래그하는 경우 오류가 발생한 이유와 해결 방법을 결정해야 합니다. 
+---
+= 저장 오류는 메시지 및 해결 방법을 보여 줍니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+오류 조건에 플래그를 지정하면 `storage errors show` 오류가 발생한 이유와 해결 방법을 결정해야 합니다.
+
+다음 표에는 에서 감지된 백엔드 구성 오류가 나열되어 있으며 각 오류의 원인과 해결 방법에 대한 자세한 정보가 나와 `storage errors show` 있습니다.
+
+|===
+| `storage errors show` 메시지 | 이 메시지에 대한 자세한 내용은 다음을 참조하십시오. 
+
+
+ a| 
+`NAME (Serial #): All paths to this array LUN are connected to the same fault domain. This is a single point of failure``..
+ a| 
+xref:reference_all_paths_to_an_array_lun_are_on_the_same_storage_array_controller.adoc[어레이 LUN에 대한 모든 경로가 동일한 스토리지 컨트롤러에 있습니다]
+
+
+
+ a| 
+`NAME (Serial #), port WWPN1: LUN 1 occurs more than once. LUNs cannot be reused on the same array target port`..
+ a| 
+xref:reference_duplicate_lun_ids_on_a_target_port.adoc[타겟 포트의 중복된 LUN ID입니다]
+
+
+
+ a| 
+`NAME (Serial #): This array LUN is an access control LUN. It is not supported and should be masked off or disabled``..
+ a| 
+xref:reference_an_access_control_lun_is_presented_to_ontap.adoc[액세스 제어 LUN이 표시되었습니다]
+
+
+
+ a| 
+`NAME (Serial #) This array LUN is configured with conflicting failover modes. Each path to this LUN must use the same mode`..
+ a| 
+xref:reference_array_luns_are_configured_with_conflicting_failover_modes_clustered_data_ontap_8_2_and_later.adoc[스토리지 LUN은 충돌하는 페일오버 모드로 구성됩니다]
+
+
+
+ a| 
+`NAME (Serial #): This Array LUN is only available on one path. Proper configuration requires two paths`..
+ a| 
+xref:reference_fewer_than_two_paths_to_an_array_lun.adoc[어레이 LUN에 대한 경로가 2개 미만입니다]
+
+
+
+ a| 
+`NAME (Serial #): This array LUN is too large and is not usable. The maximum array LUN size supported is xTB`..
+ a| 
+xref:reference_array_lun_is_either_smaller_or_larger_than_the_supported_values.adoc[어레이 LUN이 너무 작거나 너무 큽니다]
+
+
+
+ a| 
+`NAME (Serial #): This array LUN is too small and is not usable. The minimum array LUN size supported is 1GB`..
+ a| 
+xref:reference_array_lun_is_either_smaller_or_larger_than_the_supported_values.adoc[어레이 LUN이 너무 작거나 너무 큽니다]
+
+
+
+ a| 
+`NAME (Serial #): This Array LUN is using multiple LUN IDs. Only one LUN ID per serial number is supported`..
+ a| 
+xref:reference_lun_ids_for_the_same_ldev_do_not_match.adoc[동일한 LDEV의 LUN ID가 일치하지 않습니다]
+
+볼륨 세트 주소 지정이 일관되지 않습니다
+
+
+
+ a| 
+`NAME (Serial #): This array LUN is marked foreign and has a reservation`..
+ a| 
+xref:reference_array_lun_is_marked_foreign_and_has_a_reservation_data_ontap_8_3_and_later.adoc[스토리지 LUN이 외부 LUN으로 표시되고 예약이 있습니다]
+
+|===

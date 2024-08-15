@@ -1,0 +1,25 @@
+---
+permalink: install/task_removing_one_array_lun_from_use_by_data_ontap.html 
+sidebar: sidebar 
+keywords: remove, one, array, lun, use, ontap 
+summary: '스토리지 시스템 관리자가 ONTAP에 대해 특정 스토리지 LUN을 더 이상 사용하지 않으려는 경우 관리자가 다른 호스트에서 사용할 수 있도록 LUN을 재구성하기 전에 ONTAP에서 LUN에 쓴 정보(예: 크기 및 소유권)를 제거해야 합니다.' 
+---
+= ONTAP에서 사용 중인 어레이 LUN 1개를 제거합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 시스템 관리자가 ONTAP에 대해 특정 스토리지 LUN을 더 이상 사용하지 않으려는 경우 관리자가 다른 호스트에서 사용할 수 있도록 LUN을 재구성하기 전에 ONTAP에서 LUN에 쓴 정보(예: 크기 및 소유권)를 제거해야 합니다.
+
+* 필요한 것 *
+
+스토리지 어레이 관리자가 ONTAP을 더 이상 사용하지 않을 LUN이 aggregate에 있는 경우, 이 절차를 시작하기 전에 애그리게이트를 오프라인으로 전환하고 애그리게이트를 폐기해야 합니다. 애그리게이트를 오프라인으로 전환하고 폐기하면 데이터 LUN이 스페어 LUN으로 변경됩니다.
+
+.단계
+. 다음 명령을 입력합니다. `storage disk removeowner -disk LUN_name`
++
+_lun_name_은 스토리지 LUN의 이름입니다.
+
+

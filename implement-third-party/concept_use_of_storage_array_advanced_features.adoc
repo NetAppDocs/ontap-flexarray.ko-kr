@@ -1,0 +1,18 @@
+---
+permalink: implement-third-party/concept_use_of_storage_array_advanced_features.html 
+sidebar: sidebar 
+keywords: support, advanced, features, storage, arrays 
+summary: ONTAP은 상호 운용성 매트릭스에 별도로 명시되지 않은 한 스토리지 어레이의 고급 기능을 지원하지 않습니다. 
+---
+= 스토리지 어레이의 고급 기능 지원
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP은 상호 운용성 매트릭스에 별도로 명시되지 않은 한 스토리지 어레이의 고급 기능을 지원하지 않습니다.
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

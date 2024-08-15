@@ -1,0 +1,14 @@
+---
+permalink: install/concept_factors_that_impact_the_number_and_size_of_array_luns_you_need.html 
+sidebar: sidebar 
+keywords: factors, impact, number, size, array, luns, need 
+summary: 필요한 어레이 LUN 수와 해당 크기를 결정할 때는 LUN의 사용 가능한 공간을 비롯하여 여러 요소를 고려해야 합니다. 
+---
+= 필요한 어레이 LUN의 수와 크기에 영향을 주는 요소입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+필요한 어레이 LUN 수와 해당 크기를 결정할 때는 LUN의 사용 가능한 공간을 비롯하여 여러 요소를 고려해야 합니다.

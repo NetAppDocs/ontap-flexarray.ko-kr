@@ -1,0 +1,20 @@
+---
+permalink: implement-third-party/reference_supported_fabric_attached_configurations_for_storage_arrays.html 
+sidebar: sidebar 
+keywords: support, fabric-attached, configurations 
+summary: 별도로 언급하지 않는 한 모든 스토리지 어레이 공급업체는 다양한 패브릭 연결 구성을 지원합니다. 
+---
+= 지원되는 패브릭 연결 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+별도로 언급하지 않는 한 모든 스토리지 어레이 공급업체는 다양한 패브릭 연결 구성을 지원합니다.
+
+상호 운용성 매트릭스에는 특정 어레이 모델에 대한 추가 정보가 포함되어 있습니다.
+
+* 관련 정보 *
+
+https://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"]

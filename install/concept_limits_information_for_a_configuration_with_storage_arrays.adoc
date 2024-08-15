@@ -1,0 +1,30 @@
+---
+permalink: install/concept_limits_information_for_a_configuration_with_storage_arrays.html 
+sidebar: sidebar 
+keywords: limit, types, configurations, storage, arrays 
+summary: ONTAP 구성을 계획할 때는 특정 스토리지 어레이 제한을 고려해야 합니다. 
+---
+= 스토리지 배열 구성의 제한 유형
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP 구성을 계획할 때는 특정 스토리지 어레이 제한을 고려해야 합니다.
+
+Hardware Universe_에는 스토리지 배열 및 기본 디스크에 대한 특정 제한 값이 포함되어 있습니다.
+
+다음과 같은 제한 유형은 스토리지 어레이에만 적용되며 기본 디스크에는 적용되지 않습니다.
+
+* ONTAP가 지원하는 최소 및 최대 어레이 LUN 크기입니다
+* 루트 볼륨에 대한 어레이 LUN의 최소 크기입니다
+* 스페어 코어 스토리지 LUN 최소 크기입니다
+* 어레이 LUN이 있는 RAID 그룹에 대한 제한
+* 어레이 LUN 애그리게이트의 최소 애그리게이트 크기입니다
+* 플랫폼당 결합된 최대 어레이 LUN 및 디스크 수입니다
+
+
+* 관련 정보 *
+
+https://hwu.netapp.com["NetApp Hardware Universe를 참조하십시오"]

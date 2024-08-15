@@ -1,0 +1,36 @@
+---
+permalink: install/task_changing_array_lun_size_or_composition.html 
+sidebar: sidebar 
+keywords: change, array, lun, size, composition 
+summary: 스토리지 LUN의 크기 또는 구성을 재구성하는 작업은 스토리지 시스템에서 수행해야 합니다. 스토리지 LUN이 이미 ONTAP 시스템에 할당된 경우 스토리지 어레이 관리자가 LUN을 재구성하기 전에 ONTAP를 사용하여 스토리지 LUN의 상태를 Unused로 변경해야 합니다. 
+---
+= 스토리지 LUN 크기 또는 컴포지션을 변경하는 중입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 LUN의 크기 또는 구성을 재구성하는 작업은 스토리지 시스템에서 수행해야 합니다. 스토리지 LUN이 이미 ONTAP 시스템에 할당된 경우 스토리지 어레이 관리자가 LUN을 재구성하기 전에 ONTAP를 사용하여 스토리지 LUN의 상태를 Unused로 변경해야 합니다.
+
+* 필요한 것 *
+
+스토리지 LUN은 스페어 스토리지 LUN이어야 상태를 Unused로 변경할 수 있습니다.
+
+.단계
+. ONTAP 시스템에서 다음 명령을 입력하여 소유권 정보를 제거합니다. `storage disk removeowner  -disk arrayLUNname`
+. 스토리지 배열에서 다음 단계를 완료합니다.
++
+.. 스토리지 LUN을 더 이상 볼 수 없도록 ONTAP 시스템에서 스토리지 LUN을 매핑 해제(표시 해제)합니다.
+.. 스토리지 LUN의 크기 또는 구성을 변경합니다.
+.. ONTAP에서 어레이 LUN을 다시 사용하도록 하려면 어레이 LUN을 ONTAP 시스템에 다시 제공합니다.
++
+이 경우 어레이 LUN이 제공된 FC 이니시에이터 포트에 어레이 LUN이 표시되지만 ONTAP 시스템에서는 아직 사용할 수 없습니다.
+
+
+
+. ONTAP 시스템에서 어레이 LUN의 소유자가 될 다음 명령을 입력합니다. `storage disk assign -disk arrayLUNname -owner nodename`
++
+소유권 정보가 제거된 후에는 스토리지 LUN이 시스템에 다시 할당될 때까지 스토리지 LUN을 다른 ONTAP 시스템에서 사용할 수 없습니다. 어레이 LUN을 스페어로 유지하거나 애그리게이트에 추가할 수 있습니다. 어레이 LUN을 스토리지에 사용하려면 먼저 어레이 LUN을 애그리게이트에 추가해야 합니다.
+
+
